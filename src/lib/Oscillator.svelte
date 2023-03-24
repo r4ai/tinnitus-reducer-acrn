@@ -1,71 +1,47 @@
 <script lang="ts">
   import * as Tone from "tone";
   import RangeSlider from "svelte-range-slider-pips";
+  import { mode, isPlaying, frequency } from "./stores";
 
   // * Create a Oscillator and connect it to the main output (your speakers)
   const osc = new Tone.Oscillator(440, "sine").toDestination();
 
-  // * States (for Tone.js)
-  let isPlaying = false;
-  let frequency = [8000];
+  // * Apply the frequency to the oscillator
+  $: osc.frequency.value = $frequency[0];
 
-  // * States (for UI)
-  let sliderWidth;
+  // * When the mode is changed, stop the tone
+  $: {
+    if ($mode) {
+      stopOsc();
+    }
+  }
 
-  // * Effects
-  $: osc.frequency.value = frequency[0];
+  // * When isPlaying is changed, play or stop the tone
+  $: {
+    if ($isPlaying) {
+      playOsc();
+    } else {
+      stopOsc();
+    }
+  }
 
   // * Debug
-  $: console.log("Frequency: ", frequency[0]);
-  $: console.log("sliderWidth: ", sliderWidth);
+  $: console.log("Frequency: ", $frequency[0]);
 
-  function playTone() {
-    osc.start();
+  function playOsc() {
+    if ($mode === "TONE") {
+      osc.start();
+      $isPlaying = true;
+    }
   }
 
-  function stopTone() {
-    osc.stop();
-  }
-
-  function togglePlay() {
-    if (osc.state === "started") {
-      stopTone();
-      isPlaying = false;
-    } else {
-      playTone();
-      isPlaying = true;
+  function stopOsc() {
+    if ($mode === "TONE") {
+      osc.stop();
+      $isPlaying = false;
     }
   }
 </script>
-
-<div class="my-3 w-full max-w-xl font-mono" bind:clientWidth={sliderWidth}>
-  <div class="pt-2 text-center">
-    <span class="font-serif text-base">frequency:</span>
-    <input
-      type="number"
-      class="input input-xs w-20 font-mono text-base"
-      bind:value={frequency[0]}
-      min={0}
-      max={15000}
-    />
-  </div>
-  <RangeSlider
-    min={0}
-    max={15000}
-    bind:values={frequency}
-    float
-    pips
-    pipstep={sliderWidth >= 512 ? 3000 : 5000}
-    first="label"
-    last="label"
-    rest="label"
-  />
-</div>
-<div class="text-center">
-  <button class="btn-primary btn" on:click={togglePlay}>
-    {isPlaying ? "Stop" : "Play"}
-  </button>
-</div>
 
 <style>
 </style>

@@ -3,10 +3,9 @@
   import { onMount } from "svelte";
   import Oscillator from "./lib/Oscillator.svelte";
   import VolumeController from "./lib/VolumeController.svelte";
-
-  // * States (for UI)
-  type Mode = "ACRN" | "TONE";
-  let mode: Mode = "TONE";
+  import { mode } from "./lib/stores";
+  import FrequencyController from "./lib/FrequencyController.svelte";
+  import PlayController from "./lib/PlayController.svelte";
 
   // * Setup Tone.js
   onMount(() => {
@@ -25,19 +24,21 @@
 
     <div class="btn-group">
       <button
-        class={`btn ${mode === "TONE" ? "btn-active" : ""}`}
-        on:click={() => (mode = "TONE")}>Tone</button
+        class={`btn ${$mode === "TONE" ? "btn-active" : ""}`}
+        on:click={() => ($mode = "TONE")}>Tone</button
       >
       <button
-        class={`btn ${mode === "ACRN" ? "btn-active" : ""}`}
-        on:click={() => (mode = "ACRN")}>ACRN</button
+        class={`btn ${$mode === "ACRN" ? "btn-active" : ""}`}
+        on:click={() => ($mode = "ACRN")}>ACRN</button
       >
     </div>
 
     <Oscillator />
-    {#if mode === "TONE"}
+    <FrequencyController />
+    <PlayController />
+    {#if $mode === "TONE"}
       <div />
-    {:else if mode === "ACRN"}
+    {:else if $mode === "ACRN"}
       <div />
     {/if}
     <VolumeController />

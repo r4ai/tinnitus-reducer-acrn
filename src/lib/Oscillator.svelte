@@ -11,7 +11,7 @@
 
   // * When the mode is changed, stop the tone
   $: {
-    if ($mode) {
+    if ($mode === "TONE" || $mode === "ACRN") {
       stopOsc();
     }
   }
@@ -24,9 +24,6 @@
       stopOsc();
     }
   }
-
-  // * Debug
-  $: console.log("Frequency: ", $frequency[0]);
 
   function playOsc() {
     if ($mode === "TONE") {

@@ -22,5 +22,6 @@
   "[svelte]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "vitest.commandLine": "pnpm test --",
   "cSpell.words": ["ACRN"]
 }

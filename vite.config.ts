@@ -1,5 +1,6 @@
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import sveltePreprocess from "svelte-preprocess";
+/// <reference types="vitest" />
 import { defineConfig } from "vite";
 
 const mobile =
@@ -7,6 +8,7 @@ const mobile =
   process.env.TAURI_PLATFORM === "ios";
 
 // https://vitejs.dev/config/
+/** @type {import('vite').UserConfig} */
 export default defineConfig(async () => ({
   plugins: [
     svelte({
@@ -17,6 +19,11 @@ export default defineConfig(async () => ({
       ],
     }),
   ],
+  test: {
+    include: ["src/**/*.{test,spec}.{js,ts}"],
+    globals: true,
+    environment: "jsdom",
+  },
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   // prevent vite from obscuring rust errors

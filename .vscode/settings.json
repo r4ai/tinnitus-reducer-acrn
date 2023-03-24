@@ -1,0 +1,25 @@
+{
+  "svelte.enable-ts-plugin": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "svelte"
+  ],
+  "eslint.validate": ["svelte"],
+  "editor.formatOnPaste": false, // required
+  "editor.formatOnType": false, // required
+  "editor.formatOnSave": true, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "files.autoSave": "onFocusChange", // optional but recommended
+  "vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
+  "prettier.documentSelectors": ["**/*.svelte"],
+  "prettier.configPath": ".prettierrc.yaml",
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

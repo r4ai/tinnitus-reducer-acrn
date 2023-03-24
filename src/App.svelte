@@ -1,13 +1,47 @@
 <script lang="ts">
+  import * as Tone from "tone";
+  import { onMount } from "svelte";
+  import Oscillator from "./lib/Oscillator.svelte";
+  import VolumeController from "./lib/VolumeController.svelte";
+
+  // * States (for UI)
+  type Mode = "ACRN" | "TONE";
+  let mode: Mode = "TONE";
+
+  // * Setup Tone.js
+  onMount(() => {
+    Tone.start();
+  });
 </script>
 
-<main>
-  <h1 class="mt-5 text-center font-serif text-3xl font-bold">
-    Welcome to Tauri!
-  </h1>
-  <p class="mt-5 text-center font-serif text-xl">
-    Click on the Tauri, Vite, and Svelte logos to learn more.
-  </p>
+<main class="grid h-full grid-cols-center px-3">
+  <div class="col-start-2 my-auto flex flex-col items-center gap-5">
+    <h1 class="text-center font-serif text-3xl font-bold">
+      Tinnitus Reducer ACRN
+    </h1>
+    <p class="text-center font-serif text-xl">
+      This is a simple app to help you reduce your tinnitus using ACRN protocol.
+    </p>
+
+    <div class="btn-group">
+      <button
+        class={`btn ${mode === "TONE" ? "btn-active" : ""}`}
+        on:click={() => (mode = "TONE")}>Tone</button
+      >
+      <button
+        class={`btn ${mode === "ACRN" ? "btn-active" : ""}`}
+        on:click={() => (mode = "ACRN")}>ACRN</button
+      >
+    </div>
+
+    <Oscillator />
+    {#if mode === "TONE"}
+      <div />
+    {:else if mode === "ACRN"}
+      <div />
+    {/if}
+    <VolumeController />
+  </div>
 </main>
 
 <style>

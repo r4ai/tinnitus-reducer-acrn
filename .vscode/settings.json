@@ -21,5 +21,6 @@
   "prettier.configPath": ".prettierrc.yaml",
   "[svelte]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "cSpell.words": ["ACRN"]
 }

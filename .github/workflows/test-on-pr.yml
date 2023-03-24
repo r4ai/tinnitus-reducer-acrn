@@ -50,6 +50,9 @@ jobs:
       - name: install frontend dependencies
         run: pnpm install # change this to npm or pnpm depending on which one you use
 
+      - name: run frontend test
+        run: pnpm test
+
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

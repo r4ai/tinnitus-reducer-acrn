@@ -7,6 +7,7 @@
   import FrequencyController from "./lib/FrequencyController.svelte";
   import PlayController from "./lib/PlayController.svelte";
   import ModeController from "./lib/ModeController.svelte";
+  import Sequence from "./lib/Sequence.svelte";
 
   // * Setup Tone.js
   onMount(() => {
@@ -24,13 +25,12 @@
     </p>
 
     <ModeController />
-    <Oscillator />
     <FrequencyController />
     <PlayController />
     {#if $mode === "TONE"}
-      <div />
+      <Oscillator />
     {:else if $mode === "ACRN"}
-      <div />
+      <Sequence />
     {/if}
     <VolumeController />
   </div>

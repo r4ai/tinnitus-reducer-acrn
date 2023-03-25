@@ -15,7 +15,7 @@
     return res;
   }
 
-  export function shuffleFrequencies(frequencies: number[]): number[] {
+  export function shuffledFrequencies(frequencies: number[]): number[] {
     const res = [...frequencies];
     for (let i = res.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -47,7 +47,7 @@
     frequencies: number[]
   ): Sequence {
     const seq = new Tone.Sequence((time, note) => {
-      synth.triggerAttackRelease(note, 0.1, time);
+      synth.triggerAttackRelease(note, "4n", time);
       // subdivisions are given as subarrays
     }, frequencies).start(0);
     return seq;
@@ -64,7 +64,7 @@
    * @param frequencies Frequencies to be used to create the new sequence
    * @returns If successful, returns the `new sequence`, otherwise returns the `old sequence`
    */
-  export function updateSequence(
+  export function updatedSequence(
     oldSeq: Sequence | undefined,
     synth: PolySynth | Synth | undefined,
     frequencies: number[]
@@ -86,26 +86,33 @@
   import type { PolySynth, Sequence, Synth } from "tone";
 
   import * as Tone from "tone";
+  import { BPM } from "./constants";
   import { isPlaying, mode, frequency } from "./stores";
 
   let synth: PolySynth | undefined = undefined;
   let seq: Sequence | undefined = undefined;
+
+  let initialBpm: number | undefined = undefined;
 
   const frequencies = derived(frequency, $frequency =>
     generateFrequencies($frequency[0])
   );
 
   onMount(() => {
+    initialBpm = Tone.Transport.bpm.value;
     synth = createSynth();
+    Tone.Transport.bpm.value = BPM;
+    console.info("Mode changed to ACRN");
   });
 
   onDestroy(() => {
+    Tone.Transport.bpm.value = initialBpm ?? 120;
     synth?.dispose();
     seq?.dispose();
   });
 
   // * Generate sequence of frequencies
-  $: seq = updateSequence(seq, synth, $frequencies);
+  $: seq = updatedSequence(seq, synth, $frequencies);
 
   function start() {
     Tone.Transport.start();

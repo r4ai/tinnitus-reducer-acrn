@@ -27,7 +27,7 @@ export default defineConfig(async () => ({
       "src/main.ts",
       "src/vite-env.d.ts",
       "src/lib/constants.ts",
-      "src/lib/states.ts",
+      "src/lib/stores.ts",
     ],
     globals: true,
     environment: "jsdom",

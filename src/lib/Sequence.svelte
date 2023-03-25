@@ -11,17 +11,20 @@
 </script>
 
 <script lang="ts">
+  import { derived } from "svelte/store";
+
   import * as Tone from "tone";
-  import { isPlaying } from "./stores";
+  import { isPlaying, mode, frequency } from "./stores";
+
+  let frequencies = derived(frequency, $frequency =>
+    generateFrequencies($frequency[0])
+  );
 
   const synth = new Tone.Synth().toDestination();
-  const seq = new Tone.Sequence(
-    (time, note) => {
-      synth.triggerAttackRelease(note, 0.1, time);
-      // subdivisions are given as subarrays
-    },
-    ["C4", ["E4", "D4", "E4"], "G4", ["A4", "G4"]]
-  ).start(0);
+  const seq = new Tone.Sequence((time, note) => {
+    synth.triggerAttackRelease(note, 0.1, time);
+    // subdivisions are given as subarrays
+  }, $frequencies).start(0);
 
   function start() {
     Tone.Transport.start();

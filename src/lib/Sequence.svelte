@@ -24,6 +24,26 @@
     return res;
   }
 
+  export type AcrnSequence = (number | number[])[];
+
+  export function generateAcrnSequence(
+    frequencies: number[],
+    loopRepeat = 3,
+    restLength = 2
+  ): AcrnSequence {
+    // just needs to be the correct number of beats. Frequency content is ignored.
+    let freqSeq: AcrnSequence = [];
+
+    // can all be empty since tones are generated during loop play
+    for (let i = 0; i < loopRepeat; i++) {
+      freqSeq.push(shuffledFrequencies(frequencies));
+    }
+    for (let i = 0; i < restLength; i++) {
+      freqSeq.push([0, 0, 0, 0]);
+    }
+    return freqSeq;
+  }
+
   export function createSynth(): PolySynth {
     const synth = new Tone.PolySynth(Tone.Synth, {
       oscillator: {
@@ -41,14 +61,54 @@
 
   /**
    * Create a sequence of frequencies
+   * TODO: Refactor the code inside the Tone.Sequence
+   *       Maybe it's better to recreate the sequence every time to regenerate the frequencies.
+   *       I think this complex code inside the sequence may generate some bugs in firefox.
+   *       I'm not sure because of this, but the bpm of the sequence is likely to be strange.
    */
   export function createSequence(
     synth: PolySynth | Synth,
-    frequencies: number[]
+    frequencies: number[],
+    loopRepeat = 3,
+    restLength = 2
   ): Sequence {
+    let acrnSequence = generateAcrnSequence(
+      frequencies,
+      loopRepeat,
+      restLength
+    );
+    console.log(acrnSequence);
+    let currentFrequencies = shuffledFrequencies(frequencies);
+
+    let frequencyCount = 0; // 0 ~ frequencies.length
+    let repeatCount = 0; // 0 ~ loopRepeat
+    let restCount = 0; // 0 ~ restLength
     const seq = new Tone.Sequence((time, note) => {
-      synth.triggerAttackRelease(note, "4n", time);
-      // subdivisions are given as subarrays
+      if (repeatCount < loopRepeat) {
+        // Play sound
+        if (frequencyCount < frequencies.length) {
+          // Play sound
+          const note = Tone.Frequency(currentFrequencies.shift()).toFrequency();
+          console.log(time, note);
+          synth.triggerAttackRelease(note, "8n", time);
+        } else {
+          // Regenerate frequencies
+          frequencyCount = 0;
+          currentFrequencies = shuffledFrequencies(frequencies);
+          repeatCount++;
+        }
+        frequencyCount++;
+      } else {
+        // Rest
+        if (restCount < restLength) {
+          // Rest
+          restCount++;
+        } else {
+          // Reset
+          restCount = 0;
+          repeatCount = 0;
+        }
+      }
     }, frequencies).start(0);
     return seq;
   }
@@ -86,7 +146,7 @@
   import type { PolySynth, Sequence, Synth } from "tone";
 
   import * as Tone from "tone";
-  import { BPM } from "./constants";
+  import { DEFAULT_BPM } from "./constants";
   import { isPlaying, mode, frequency } from "./stores";
 
   let synth: PolySynth | undefined = undefined;
@@ -101,12 +161,12 @@
   onMount(() => {
     initialBpm = Tone.Transport.bpm.value;
     synth = createSynth();
-    Tone.Transport.bpm.value = BPM;
+    Tone.Transport.bpm.value = DEFAULT_BPM;
     console.info("Mode changed to ACRN");
   });
 
   onDestroy(() => {
-    Tone.Transport.bpm.value = initialBpm ?? 120;
+    Tone.Transport.bpm.value = initialBpm ?? DEFAULT_BPM;
     synth?.dispose();
     seq?.dispose();
   });
@@ -114,19 +174,18 @@
   // * Generate sequence of frequencies
   $: seq = updatedSequence(seq, synth, $frequencies);
 
-  function start() {
-    Tone.Transport.start();
-    console.log("transport started");
-  }
-
-  function stop() {
-    Tone.Transport.stop();
-    console.log("transport stopped");
+  // * Start/Stop the sequence
+  $: {
+    if ($mode === "ACRN") {
+      if ($isPlaying) {
+        Tone.Transport.start();
+      } else {
+        Tone.Transport.stop();
+      }
+    }
   }
 </script>
 
 <div data-testid="sequence" />
-<button class="btn" on:click={start}>start</button>
-<button class="btn" on:click={stop}>stop</button>
 
 <style></style>

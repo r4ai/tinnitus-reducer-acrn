@@ -72,12 +72,6 @@
     loopRepeat = 3,
     restLength = 2
   ): Sequence {
-    let acrnSequence = generateAcrnSequence(
-      frequencies,
-      loopRepeat,
-      restLength
-    );
-    console.log(acrnSequence);
     let currentFrequencies = shuffledFrequencies(frequencies);
 
     let frequencyCount = 0; // 0 ~ frequencies.length
@@ -163,12 +157,14 @@
     synth = createSynth();
     Tone.Transport.bpm.value = DEFAULT_BPM;
     console.info("Mode changed to ACRN");
+    $isPlaying = false;
   });
 
   onDestroy(() => {
+    $isPlaying = false;
     Tone.Transport.bpm.value = initialBpm ?? DEFAULT_BPM;
-    synth?.dispose();
     seq?.dispose();
+    synth?.releaseAll();
   });
 
   // * Generate sequence of frequencies
@@ -186,6 +182,9 @@
   }
 </script>
 
-<div data-testid="sequence" />
+<div data-testid="sequence">
+  <p class="text-center font-serif">frequencies:</p>
+  <p class="text-center font-mono">{$frequencies.join(", ")}</p>
+</div>
 
 <style></style>

@@ -59,6 +59,18 @@
     return synth;
   }
 
+  export type SequenceOption = {
+    loopRepeat: number;
+    restLength: number;
+    duration: Tone.Unit.Time;
+  };
+
+  export const defaultSequenceOption: SequenceOption = {
+    loopRepeat: 3,
+    restLength: 2,
+    duration: "8n",
+  };
+
   /**
    * Create a sequence of frequencies
    * TODO: Refactor the code inside the Tone.Sequence
@@ -69,8 +81,7 @@
   export function createSequence(
     synth: PolySynth | Synth,
     frequencies: number[],
-    loopRepeat = 3,
-    restLength = 2
+    { loopRepeat, restLength, duration } = defaultSequenceOption
   ): Sequence {
     let currentFrequencies = shuffledFrequencies(frequencies);
 
@@ -84,7 +95,7 @@
           // Play sound
           const note = Tone.Frequency(currentFrequencies.shift()).toFrequency();
           console.log(time, note);
-          synth.triggerAttackRelease(note, "8n", time);
+          synth.triggerAttackRelease(note, duration, time);
         } else {
           // Regenerate frequencies
           frequencyCount = 0;
@@ -121,11 +132,12 @@
   export function updatedSequence(
     oldSeq: Sequence | undefined,
     synth: PolySynth | Synth | undefined,
-    frequencies: number[]
+    frequencies: number[],
+    option = defaultSequenceOption
   ): Sequence | undefined {
     if (synth) {
       oldSeq?.dispose();
-      const newSeq = createSequence(synth, frequencies);
+      const newSeq = createSequence(synth, frequencies, option);
       return newSeq;
     } else {
       return oldSeq;
@@ -140,35 +152,39 @@
   import type { PolySynth, Sequence, Synth } from "tone";
 
   import * as Tone from "tone";
-  import { DEFAULT_BPM } from "./constants";
-  import { isPlaying, mode, frequency } from "./stores";
+  import { isPlaying, mode, frequency, bpm } from "./stores";
 
   let synth: PolySynth | undefined = undefined;
   let seq: Sequence | undefined = undefined;
-
-  let initialBpm: number | undefined = undefined;
 
   const frequencies = derived(frequency, $frequency =>
     generateFrequencies($frequency[0])
   );
 
   onMount(() => {
-    initialBpm = Tone.Transport.bpm.value;
     synth = createSynth();
-    Tone.Transport.bpm.value = DEFAULT_BPM;
     console.info("Mode changed to ACRN");
     $isPlaying = false;
   });
 
   onDestroy(() => {
     $isPlaying = false;
-    Tone.Transport.bpm.value = initialBpm ?? DEFAULT_BPM;
     seq?.dispose();
     synth?.releaseAll();
   });
 
   // * Generate sequence of frequencies
-  $: seq = updatedSequence(seq, synth, $frequencies);
+  $: seq = updatedSequence(seq, synth, $frequencies, {
+    loopRepeat: 3,
+    restLength: 2,
+    duration: "8n",
+  });
+
+  // * Update BPM
+  $: {
+    Tone.Transport.bpm.rampTo($bpm, 0.05);
+    console.log("BPM changed to", $bpm);
+  }
 
   // * Start/Stop the sequence
   $: {

@@ -1,5 +1,6 @@
 <script lang="ts">
   import RangeSlider from "svelte-range-slider-pips";
+  import { MAX_FREQUENCY, MIN_FREQUENCY } from "./constants";
   import { frequency } from "./stores";
 
   // * States
@@ -13,13 +14,13 @@
       type="number"
       class="input input-xs w-20 font-mono text-base"
       bind:value={$frequency[0]}
-      min={0}
-      max={15000}
+      min={MIN_FREQUENCY}
+      max={MAX_FREQUENCY}
     />
   </div>
   <RangeSlider
-    min={0}
-    max={15000}
+    min={MIN_FREQUENCY}
+    max={MAX_FREQUENCY}
     bind:values={$frequency}
     float
     pips

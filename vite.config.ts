@@ -1,7 +1,8 @@
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import sveltePreprocess from "svelte-preprocess";
+import removeConsole from "vite-plugin-remove-console";
 /// <reference types="vitest" />
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 
 const mobile =
   process.env.TAURI_PLATFORM === "android" ||
@@ -18,11 +19,25 @@ export default defineConfig(async () => ({
         }),
       ],
     }),
+    removeConsole(),
   ],
   test: {
-    include: ["src/**/*.{test,spec}.{js,ts}"],
+    include: ["src/**/*.{js,ts}"],
+    exclude: [
+      "src/main.ts",
+      "src/vite-env.d.ts",
+      "src/lib/constants.ts",
+      "src/lib/states.ts",
+    ],
     globals: true,
     environment: "jsdom",
+    browser: {
+      enabled: true,
+      name: "edge",
+    },
+  },
+  define: {
+    "import.meta.vitest": undefined,
   },
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`

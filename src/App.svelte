@@ -6,6 +6,7 @@
   import { mode } from "./lib/stores";
   import FrequencyController from "./lib/FrequencyController.svelte";
   import PlayController from "./lib/PlayController.svelte";
+  import ModeController from "./lib/ModeController.svelte";
 
   // * Setup Tone.js
   onMount(() => {
@@ -22,17 +23,7 @@
       This is a simple app to help you reduce your tinnitus using ACRN protocol.
     </p>
 
-    <div class="btn-group">
-      <button
-        class={`btn ${$mode === "TONE" ? "btn-active" : ""}`}
-        on:click={() => ($mode = "TONE")}>Tone</button
-      >
-      <button
-        class={`btn ${$mode === "ACRN" ? "btn-active" : ""}`}
-        on:click={() => ($mode = "ACRN")}>ACRN</button
-      >
-    </div>
-
+    <ModeController />
     <Oscillator />
     <FrequencyController />
     <PlayController />

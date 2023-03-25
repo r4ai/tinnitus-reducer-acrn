@@ -6,6 +6,10 @@ import { isPlaying } from "./stores";
 
 describe("PlayController.svelte", async () => {
   test("check does playButton work", async () => {
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+    /* @ts-ignore */
     render(PlayController);
 
     const button = screen.getByText("Play");
@@ -15,5 +19,9 @@ describe("PlayController.svelte", async () => {
     await fireEvent.click(button);
     expect(button).toHaveTextContent("Stop");
     expect(get(isPlaying)).toBe(true);
+
+    await fireEvent.click(button);
+    expect(button).toHaveTextContent("Play");
+    expect(get(isPlaying)).toBe(false);
   });
 });

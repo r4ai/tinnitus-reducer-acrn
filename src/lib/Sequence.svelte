@@ -15,15 +15,27 @@
   import { isPlaying } from "./stores";
 
   const synth = new Tone.Synth().toDestination();
+  const seq = new Tone.Sequence(
+    (time, note) => {
+      synth.triggerAttackRelease(note, 0.1, time);
+      // subdivisions are given as subarrays
+    },
+    ["C4", ["E4", "D4", "E4"], "G4", ["A4", "G4"]]
+  ).start(0);
 
   function start() {
-    synth.triggerAttackRelease("E4", "4n");
+    Tone.Transport.start();
     console.log("transport started");
+  }
+
+  function stop() {
+    Tone.Transport.stop();
+    console.log("transport stopped");
   }
 </script>
 
 <div data-testid="sequence" />
 <button class="btn" on:click={start}>start</button>
-<button class="btn" on:click={() => Tone.Transport.stop()}>stop</button>
+<button class="btn" on:click={stop}>stop</button>
 
 <style></style>

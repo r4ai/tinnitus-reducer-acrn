@@ -27,7 +27,6 @@
   export type AcrnSequence = (number | number[])[];
 
   export function generateAcrnSequence(
-    frequencies: number[],
     loopRepeat = 3,
     restLength = 2
   ): AcrnSequence {
@@ -122,7 +121,7 @@
           repeatCount = 0;
         }
       }
-    }, generateAcrnSequence());
+    }, generateAcrnSequence(loopRepeat, restLength));
     seq.loop = true;
     seq.start(0);
     return seq;

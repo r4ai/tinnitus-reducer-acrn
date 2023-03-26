@@ -22,6 +22,13 @@
       "testing-library__jest-dom"
     ]
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.svelte",
+    "tests/**/*.ts",
+    "tests/**/*.js"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,9 +1,13 @@
 import "@testing-library/jest-dom";
 import { fireEvent, getByRole, render } from "@testing-library/svelte";
 import { get } from "svelte/store";
-import { INITIAL_FREQUENCY, MAX_FREQUENCY, MIN_FREQUENCY } from "./constants";
-import FrequencyController from "./FrequencyController.svelte";
-import { frequency } from "./stores";
+import {
+  INITIAL_FREQUENCY,
+  MAX_FREQUENCY,
+  MIN_FREQUENCY,
+} from "../src/lib/constants";
+import FrequencyController from "../src/lib/FrequencyController.svelte";
+import { frequency } from "../src/lib/stores";
 
 describe("FrequencyController", () => {
   test("min and max should be 0 and 15000", async () => {

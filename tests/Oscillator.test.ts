@@ -1,11 +1,11 @@
 import "@testing-library/jest-dom";
-import { INITIAL_FREQUENCY } from "./constants";
+import { INITIAL_FREQUENCY } from "../src/lib/constants";
 import {
   createOscillator,
   playOsc,
   setFrequency,
   stopOsc,
-} from "./Oscillator.svelte";
+} from "../src/lib/Oscillator.svelte";
 
 describe("playOsc", () => {
   test("mode=TONEのとき、oscillatorがスタートされること", () => {

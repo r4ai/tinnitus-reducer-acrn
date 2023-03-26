@@ -22,13 +22,7 @@ export default defineConfig(async () => ({
     removeConsole(),
   ],
   test: {
-    include: ["src/**/*.{js,ts}"],
-    exclude: [
-      "src/main.ts",
-      "src/vite-env.d.ts",
-      "src/lib/constants.ts",
-      "src/lib/stores.ts",
-    ],
+    include: ["tests/**/*.{js,ts}"],
     globals: true,
     environment: "jsdom",
     browser: {

@@ -85,6 +85,7 @@
   });
 
   onDestroy(() => {
+    $isPlaying = stopOsc(osc, $mode) ?? false;
     osc?.dispose();
   });
 
@@ -110,7 +111,16 @@
   }
 </script>
 
-<div data-testid="oscillator" />
+<div data-testid="oscillator" class="prose max-w-md font-serif">
+  <ol class="prose-ol">
+    <li>Start the tone by pressing the "PLAY" button.</li>
+    <li>
+      Adjust the frequency slider until it matches your tinnitus tone. You can
+      also type in the frequency if you know it already.
+    </li>
+    <li>Switch from "Tone" to "ACRN" mode</li>
+  </ol>
+</div>
 
 <style>
 </style>

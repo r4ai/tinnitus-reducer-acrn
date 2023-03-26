@@ -1,9 +1,13 @@
 import "@testing-library/jest-dom";
 import { fireEvent, getByRole, render } from "@testing-library/svelte";
 import { get } from "svelte/store";
-import { INITIAL_FREQUENCY, MAX_FREQUENCY, MIN_FREQUENCY } from "./constants";
-import FrequencyController from "./FrequencyController.svelte";
-import { frequency } from "./stores";
+import {
+  INITIAL_FREQUENCY,
+  MAX_FREQUENCY,
+  MIN_FREQUENCY,
+} from "../lib/constants";
+import FrequencyController from "../lib/FrequencyController.svelte";
+import { frequency } from "../lib/stores";
 
 describe("FrequencyController", () => {
   test("min and max should be 0 and 15000", async () => {
@@ -42,13 +46,13 @@ describe("FrequencyController", () => {
     expect(input).toBeInTheDocument();
     expect(get(frequency)[0]).toBe(INITIAL_FREQUENCY);
 
-    fireEvent.input(input, { target: { value: "10000" } });
+    await fireEvent.input(input, { target: { value: "10000" } });
     expect(get(frequency)[0]).toBe(10000);
 
-    fireEvent.input(input, { target: { value: "0" } });
+    await fireEvent.input(input, { target: { value: "0" } });
     expect(get(frequency)[0]).toBe(0);
 
-    fireEvent.input(input, { target: { value: "15000" } });
+    await fireEvent.input(input, { target: { value: "15000" } });
     expect(get(frequency)[0]).toBe(15000);
   });
 });

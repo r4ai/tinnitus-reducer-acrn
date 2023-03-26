@@ -1,6 +1,5 @@
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import sveltePreprocess from "svelte-preprocess";
-import removeConsole from "vite-plugin-remove-console";
 /// <reference types="vitest" />
 import { defineConfig } from "vitest/config";
 
@@ -19,21 +18,17 @@ export default defineConfig(async () => ({
         }),
       ],
     }),
-    removeConsole(),
+    // removeConsole(),
   ],
   test: {
-    include: ["src/**/*.{js,ts}"],
-    exclude: [
-      "src/main.ts",
-      "src/vite-env.d.ts",
-      "src/lib/constants.ts",
-      "src/lib/stores.ts",
-    ],
+    include: ["src/tests/**/*.{js,ts}"],
+    threads: false,
     globals: true,
     environment: "jsdom",
     browser: {
       enabled: true,
       name: "edge",
+      headless: true,
     },
   },
   define: {

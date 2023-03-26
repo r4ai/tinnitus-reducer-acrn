@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   /**
    * Generate frequencies based on the current frequency
-   * - e.g. 1000 Hz -> [773, 903, 1090, 1395]
+   * - e.g. 1000 Hz -> [728, 881, 1142, 1421]
    * @param currentFrequency
    * @returns Frequencies based on the current frequency
    */
@@ -26,7 +26,7 @@
 
   export type AcrnSequence = (number | number[])[];
 
-  export function generateAcrnSequence(
+  export function generateAcrnSheet(
     loopRepeat = 3,
     restLength = 2
   ): AcrnSequence {
@@ -35,11 +35,19 @@
 
     // can all be empty since tones are generated during loop play
     for (let i = 0; i < loopRepeat; i++) {
-      freqSeq.push(...[0, 0, 0, 0]);
+      freqSeq.push(
+        ...[
+          SHEET_RANDOM_FREQUENCY,
+          SHEET_RANDOM_FREQUENCY,
+          SHEET_RANDOM_FREQUENCY,
+          SHEET_RANDOM_FREQUENCY,
+        ]
+      );
     }
     for (let i = 0; i < restLength; i++) {
-      freqSeq.push([0]);
+      freqSeq.push(SHEET_REST);
     }
+    console.log(`ACRN sheet: [${freqSeq}]`);
     return freqSeq;
   }
 
@@ -67,7 +75,9 @@
     },
   };
 
-  export function createSynth(option = defaultPolySynthOption): PolySynth {
+  export function createSynth(
+    option = defaultPolySynthOption
+  ): PolySynth<Synth<SynthOptions>> {
     const synth = new Tone.PolySynth(Tone.Synth, option).toDestination();
     return synth;
   }
@@ -85,7 +95,7 @@
   };
 
   /**
-   * Create a sequence of frequencies
+   * Create a sequence of frequencies and start it.
    * TODO: Refactor the code inside the Tone.Sequence
    *       Maybe it's better to recreate the sequence every time to regenerate the frequencies.
    *       I think this complex code inside the sequence may generate some bugs in firefox.
@@ -98,30 +108,16 @@
   ): Sequence {
     let currentFrequencies = shuffledFrequencies(frequencies);
 
-    let repeatCount = 0; // 0 ~ loopRepeat
-    let restCount = 0; // 0 ~ restLength * frequencies.length
+    const sheet = generateAcrnSheet(loopRepeat, restLength);
     const seq = new Tone.Sequence((time, note) => {
-      if (repeatCount < loopRepeat) {
-        // Play sound
-        const note = Tone.Frequency(currentFrequencies.shift()).toFrequency();
-        console.log(time, note);
-        synth.triggerAttackRelease(note, duration, time);
-        if (currentFrequencies.length === 0) {
-          currentFrequencies = shuffledFrequencies(frequencies);
-          repeatCount++;
-        }
-      } else {
-        // Rest
-        if (restCount < restLength * frequencies.length - 1) {
-          // Rest
-          restCount++;
-        } else {
-          // Reset
-          restCount = 0;
-          repeatCount = 0;
-        }
+      if (note === SHEET_RANDOM_FREQUENCY) {
+        note = currentFrequencies.pop() ?? frequencies[0];
       }
-    }, generateAcrnSequence(loopRepeat, restLength));
+      if (currentFrequencies.length === 0) {
+        currentFrequencies = shuffledFrequencies(frequencies);
+      }
+      synth.triggerAttackRelease(note, duration, time);
+    }, sheet);
     seq.loop = true;
     seq.start(0);
     return seq;
@@ -158,9 +154,10 @@
   import { onDestroy, onMount } from "svelte";
 
   import { derived } from "svelte/store";
-  import type { PolySynth, Sequence, Synth } from "tone";
+  import type { PolySynth, Sequence, Synth, SynthOptions } from "tone";
 
   import * as Tone from "tone";
+  import { SHEET_RANDOM_FREQUENCY, SHEET_REST } from "./constants";
   import { isPlaying, mode, frequency, bpm } from "./stores";
 
   let synth: PolySynth | undefined = undefined;
@@ -185,7 +182,7 @@
   // * Generate sequence of frequencies
   $: seq = updatedSequence(seq, synth, $frequencies, {
     loopRepeat: 3,
-    restLength: 2,
+    restLength: 2 * 4,
     duration: "4n",
   });
 

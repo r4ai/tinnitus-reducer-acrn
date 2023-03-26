@@ -8,3 +8,6 @@ export const MAX_FREQUENCY = 15000;
 
 export const LOOP_REPEAT = 4;
 export const REST_LENGTH = 4;
+
+export const SHEET_RANDOM_FREQUENCY = 0;
+export const SHEET_REST = 1;

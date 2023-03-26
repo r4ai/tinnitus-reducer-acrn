@@ -12,7 +12,7 @@ describe("ModeSwitcher component", () => {
     mode.set("TONE");
   });
 
-  it("changes the mode to 'ACRN' when 'ACRN' button is clicked", async () => {
+  test("changes the mode to 'ACRN' when 'ACRN' button is clicked", async () => {
     /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
     /* @ts-ignore */
     const { getByText } = render(ModeController);
@@ -26,7 +26,7 @@ describe("ModeSwitcher component", () => {
     expect(get(mode)).toBe("ACRN");
   });
 
-  it("changes the mode to 'TONE' when 'Tone' button is clicked", async () => {
+  test("changes the mode to 'TONE' when 'Tone' button is clicked", async () => {
     /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
     /* @ts-ignore */
     const { getByText } = render(ModeController);

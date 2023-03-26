@@ -22,12 +22,13 @@ export default defineConfig(async () => ({
     removeConsole(),
   ],
   test: {
-    include: ["tests/**/*.{js,ts}"],
+    include: ["src/tests/**/*.{js,ts}"],
     globals: true,
     environment: "jsdom",
     browser: {
       enabled: true,
       name: "edge",
+      headless: true,
     },
   },
   define: {

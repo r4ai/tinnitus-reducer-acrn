@@ -5,9 +5,9 @@ import {
   INITIAL_FREQUENCY,
   MAX_FREQUENCY,
   MIN_FREQUENCY,
-} from "../src/lib/constants";
-import FrequencyController from "../src/lib/FrequencyController.svelte";
-import { frequency } from "../src/lib/stores";
+} from "../lib/constants";
+import FrequencyController from "../lib/FrequencyController.svelte";
+import { frequency } from "../lib/stores";
 
 describe("FrequencyController", () => {
   test("min and max should be 0 and 15000", async () => {

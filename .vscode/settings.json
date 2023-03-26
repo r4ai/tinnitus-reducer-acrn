@@ -23,15 +23,14 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.tsc.autoDetect": "off",
-  "vitest.include": ["tests/**/*.{ts,js}"],
+  "vitest.include": ["src/tests/**/*.{ts,js}"],
   "vitest.exclude": [
     "**/node_modules/**",
     "**/dist/**",
     "**/cypress/**",
     "**/.{idea,git,cache,output,temp}/**",
     "public/**",
-    "src-tauri/**",
-    "src/**"
+    "src-tauri/**"
   ],
   "cSpell.words": ["ACRN"]
 }

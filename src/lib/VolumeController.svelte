@@ -22,7 +22,7 @@
     }
   }
 
-  /**
+  /** n
    * Convert gain to decibel
    * @param gain Gain - 0 ~ 100
    * @returns Decibel

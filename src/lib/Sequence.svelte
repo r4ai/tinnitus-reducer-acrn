@@ -36,26 +36,40 @@
 
     // can all be empty since tones are generated during loop play
     for (let i = 0; i < loopRepeat; i++) {
-      freqSeq.push(shuffledFrequencies(frequencies));
+      freqSeq.push(...[0, 0, 0, 0]);
     }
     for (let i = 0; i < restLength; i++) {
-      freqSeq.push([0, 0, 0, 0]);
+      freqSeq.push([0]);
     }
     return freqSeq;
   }
 
-  export function createSynth(): PolySynth {
-    const synth = new Tone.PolySynth(Tone.Synth, {
-      oscillator: {
-        type: "sine",
-      },
-      envelope: {
-        attack: 0.01,
-        decay: 0.01,
-        sustain: 0.5,
-        release: 0.5,
-      },
-    }).toDestination();
+  export type PolySynthOption = {
+    oscillator: {
+      type: "sine" | "square" | "triangle" | "sawtooth" | "fatsine";
+    };
+    envelope: {
+      attack: number;
+      decay: number;
+      sustain: number;
+      release: number;
+    };
+  };
+
+  export const defaultPolySynthOption: PolySynthOption = {
+    oscillator: {
+      type: "sine",
+    },
+    envelope: {
+      attack: 0.1,
+      decay: 0.0,
+      sustain: 0.07,
+      release: 0.08,
+    },
+  };
+
+  export function createSynth(option = defaultPolySynthOption): PolySynth {
+    const synth = new Tone.PolySynth(Tone.Synth, option).toDestination();
     return synth;
   }
 
@@ -68,7 +82,7 @@
   export const defaultSequenceOption: SequenceOption = {
     loopRepeat: 3,
     restLength: 2,
-    duration: "8n",
+    duration: "4n",
   };
 
   /**
@@ -85,27 +99,21 @@
   ): Sequence {
     let currentFrequencies = shuffledFrequencies(frequencies);
 
-    let frequencyCount = 0; // 0 ~ frequencies.length
     let repeatCount = 0; // 0 ~ loopRepeat
-    let restCount = 0; // 0 ~ restLength
+    let restCount = 0; // 0 ~ restLength * frequencies.length
     const seq = new Tone.Sequence((time, note) => {
       if (repeatCount < loopRepeat) {
         // Play sound
-        if (frequencyCount < frequencies.length) {
-          // Play sound
-          const note = Tone.Frequency(currentFrequencies.shift()).toFrequency();
-          console.log(time, note);
-          synth.triggerAttackRelease(note, duration, time);
-        } else {
-          // Regenerate frequencies
-          frequencyCount = 0;
+        const note = Tone.Frequency(currentFrequencies.shift()).toFrequency();
+        console.log(time, note);
+        synth.triggerAttackRelease(note, duration, time);
+        if (currentFrequencies.length === 0) {
           currentFrequencies = shuffledFrequencies(frequencies);
           repeatCount++;
         }
-        frequencyCount++;
       } else {
         // Rest
-        if (restCount < restLength) {
+        if (restCount < restLength * frequencies.length - 1) {
           // Rest
           restCount++;
         } else {
@@ -114,7 +122,9 @@
           repeatCount = 0;
         }
       }
-    }, frequencies).start(0);
+    }, generateAcrnSequence());
+    seq.loop = true;
+    seq.start(0);
     return seq;
   }
 
@@ -177,7 +187,7 @@
   $: seq = updatedSequence(seq, synth, $frequencies, {
     loopRepeat: 3,
     restLength: 2,
-    duration: "8n",
+    duration: "4n",
   });
 
   // * Update BPM

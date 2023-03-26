@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "tauri-svelte-tailwindcss-template",
+    "productName": "tinnitus-reducer-ACRN",
     "version": "0.0.0"
   },
   "tauri": {
@@ -27,7 +27,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.yourname.dev",
+      "identifier": "com.r4ai.dev",
       "targets": "all"
     },
     "security": {
@@ -40,7 +40,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "tauri-svelte-tailwindcss-template",
+        "title": "tinnitus reducer ACRN",
         "width": 800,
         "height": 600
       }

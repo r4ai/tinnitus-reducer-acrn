@@ -1,10 +1,10 @@
 [package]
-name = "tauri-svelte-tailwindcss-template"
+name = "tinnitus-reducer-ACRN"
 version = "0.0.0"
 description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+authors = ["rai"]
+license = "MIT"
+repository = "https://github.com/r4ai/tinnitus-reducer-acrn/"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

@@ -16,21 +16,27 @@
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;
 
   async function setupSettings() {
+    // * Load and initialize settings
     const settings = await loadSettings();
     $volume = [settings.volume];
     $frequency = [settings.frequency];
     $bpm = [settings.bpm];
+
+    // * Subscribe lazy save settings
+    unsubscribeStores = subscribeStores();
+    unsubscribeLazySave = subscribeLazySaveSettings();
+    console.info("Settings subscribed");
     return "settings has loaded!";
   }
 
-  // * Setup Tone.js
+  // * Setup Tone.js & settings
   onMount(() => {
+    // * Start Tone.js
     Tone.start();
-    unsubscribeStores = subscribeStores();
-    unsubscribeLazySave = subscribeLazySaveSettings();
     console.info("Tone.js started");
   });
 
+  // * Cleanup settings
   onDestroy(() => {
     unsubscribeStores?.forEach(unsubscribe => unsubscribe());
     unsubscribeLazySave?.();

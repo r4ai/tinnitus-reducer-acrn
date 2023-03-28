@@ -11,21 +11,18 @@ export const mode: Writable<Mode> = writable("TONE");
 export const isPlaying = writable(false);
 
 /**
- * Subscribe to all stores and log their values
+ * Subscribe to all stores and update the settings cache when the value changes.
  */
 export function subscribeStores() {
   const unsubscribe = [
     frequency.subscribe(value => {
       updateCache({ frequency: value[0] });
-      console.log("Saved frequency", value[0]);
     }),
     volume.subscribe(value => {
       updateCache({ volume: value[0] });
-      console.log("Saved volume", value[0]);
     }),
     bpm.subscribe(value => {
       updateCache({ bpm: value[0] });
-      console.log("Saved bpm", value[0]);
     }),
   ];
   return unsubscribe;

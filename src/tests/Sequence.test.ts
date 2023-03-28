@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import type { PolySynth } from "tone";
 import * as Tone from "tone";
-import type { SpyInstance } from "vitest";
+import { describe, type SpyInstance } from "vitest";
 import {
   createSequence,
   createSynth,

@@ -143,6 +143,7 @@
     if (synth) {
       oldSeq?.dispose();
       const newSeq = createSequence(synth, frequencies, option);
+      console.log(`Sequence updated`);
       return newSeq;
     } else {
       return oldSeq;
@@ -180,24 +181,30 @@
   });
 
   // * Generate sequence of frequencies
-  $: seq = updatedSequence(seq, synth, $frequencies, {
-    loopRepeat: 3,
-    restLength: 2 * 4,
-    duration: "4n",
-  });
+  $: {
+    if ($isPlaying) {
+      seq = updatedSequence(seq, synth, $frequencies, {
+        loopRepeat: 3,
+        restLength: 2 * 4,
+        duration: "4n",
+      });
+    }
+  }
 
   // * Update BPM
   $: {
-    Tone.Transport.bpm.rampTo($bpm, 0.05);
-    console.log("BPM changed to", $bpm);
+    Tone.Transport.bpm.rampTo($bpm[0], 0.05);
+    console.log("BPM changed to", $bpm[0]);
   }
 
   // * Start/Stop the sequence
   $: {
     if ($mode === "ACRN") {
       if ($isPlaying) {
+        console.log("Start playing ACRN");
         Tone.Transport.start();
       } else {
+        console.log("Stop playing ACRN");
         Tone.Transport.stop();
       }
     }

@@ -1,5 +1,6 @@
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import sveltePreprocess from "svelte-preprocess";
+import removeConsole from "vite-plugin-remove-console";
 /// <reference types="vitest" />
 import { defineConfig } from "vitest/config";
 
@@ -18,7 +19,7 @@ export default defineConfig(async () => ({
         }),
       ],
     }),
-    // removeConsole(),
+    removeConsole(),
   ],
   test: {
     include: ["src/tests/**/*.{js,ts}"],

@@ -66,5 +66,5 @@
     "vitest": "^0.29.7",
     "webdriverio": "^8.6.9"
   },
-  "packageManager": "pnpm@7.30.1"
+  "packageManager": "pnpm@7.30.5"
 }

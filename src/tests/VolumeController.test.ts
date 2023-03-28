@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { getByRole, render } from "@testing-library/svelte";
+import { getByRole, render, waitFor } from "@testing-library/svelte";
 import * as Tone from "tone";
 import { INITIAL_VOLUME, MAX_VOLUME, MIN_VOLUME } from "../lib/constants";
 import VolumeController, {
@@ -7,51 +7,61 @@ import VolumeController, {
 } from "../lib/VolumeController.svelte";
 
 describe("setDestinationVolume", () => {
-  test("volume < -80", () => {
+  const MIN_INFTY_VOLUME = -140;
+  test("volume < -80", async () => {
     const destination = Tone.getDestination();
     const initialVolume = destination.volume.value;
     const result = setDestinationVolume(destination, -81);
     expect(result).toBe(null);
-    setTimeout(() => {
+    await waitFor(() => {
       expect(destination.volume.value).toBe(initialVolume);
-    }, 100);
+    });
   });
 
-  test("volume > 0", () => {
+  test("volume > 0", async () => {
     const destination = Tone.getDestination();
     const initialVolume = destination.volume.value;
     const result = setDestinationVolume(destination, 1);
     expect(result).toBe(null);
-    setTimeout(() => {
+    await waitFor(() => {
       expect(destination.volume.value).toBe(initialVolume);
-    }, 100);
+    });
   });
 
-  test("volume = 0", () => {
+  test("volume = 0", async () => {
     const destination = Tone.getDestination();
     const result = setDestinationVolume(destination, 0);
     expect(result).toBe(0);
-    setTimeout(() => {
+    await waitFor(() => {
       expect(destination.volume.value).toBe(0);
-    }, 100);
+    });
   });
 
-  test("volume = -50", () => {
+  test("volume = -50", async () => {
     const destination = Tone.getDestination();
     const result = setDestinationVolume(destination, -50);
     expect(result).toBe(-50);
-    setTimeout(() => {
+    await waitFor(() => {
       expect(destination.volume.value).toBe(-50);
-    }, 100);
+    });
   });
 
-  test("volume = -80", () => {
+  test("volume = -80", async () => {
     const destination = Tone.getDestination();
     const result = setDestinationVolume(destination, -80);
     expect(result).toBe(-Infinity);
-    setTimeout(() => {
-      expect(destination.volume.value).toBe(-Infinity);
-    }, 100);
+    await waitFor(() => {
+      expect(destination.volume.value).toBe(MIN_INFTY_VOLUME);
+    });
+  });
+
+  test("volume = NaN", async () => {
+    const destination = Tone.getDestination();
+    const result = setDestinationVolume(destination, NaN);
+    expect(result).toBe(-Infinity);
+    await waitFor(() => {
+      expect(destination.volume.value).toBe(MIN_INFTY_VOLUME);
+    });
   });
 });
 

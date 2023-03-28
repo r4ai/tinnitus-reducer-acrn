@@ -32,5 +32,5 @@
     "public/**",
     "src-tauri/**"
   ],
-  "cSpell.words": ["ACRN"]
+  "cSpell.words": ["ACRN", "APPCONFIG", "Unsubscriber"]
 }

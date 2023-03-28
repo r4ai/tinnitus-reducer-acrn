@@ -1,17 +1,39 @@
 <script lang="ts">
   import * as Tone from "tone";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import Oscillator from "./lib/Oscillator.svelte";
   import VolumeController from "./lib/VolumeController.svelte";
-  import { mode } from "./lib/stores";
+  import { bpm, frequency, mode, subscribeStores, volume } from "./lib/stores";
   import FrequencyController from "./lib/FrequencyController.svelte";
   import PlayController from "./lib/PlayController.svelte";
   import ModeController from "./lib/ModeController.svelte";
   import Sequence from "./lib/Sequence.svelte";
+  import { SyncLoader } from "svelte-loading-spinners";
+  import { loadSettings, subscribeLazySaveSettings } from "./lib/settings";
+  import type { Unsubscriber } from "svelte/store";
+
+  let unsubscribeStores: Unsubscriber[] | undefined = undefined;
+  let unsubscribeLazySave: Unsubscriber | undefined = undefined;
+
+  async function setupSettings() {
+    const settings = await loadSettings();
+    $volume = [settings.volume];
+    $frequency = [settings.frequency];
+    $bpm = [settings.bpm];
+    return "settings has loaded!";
+  }
 
   // * Setup Tone.js
   onMount(() => {
     Tone.start();
+    unsubscribeStores = subscribeStores();
+    unsubscribeLazySave = subscribeLazySaveSettings();
+    console.info("Tone.js started");
+  });
+
+  onDestroy(() => {
+    unsubscribeStores?.forEach(unsubscribe => unsubscribe());
+    unsubscribeLazySave?.();
   });
 </script>
 
@@ -24,15 +46,27 @@
       This is a simple app to help you reduce your tinnitus using ACRN protocol.
     </p>
 
-    <ModeController />
-    <FrequencyController />
-    <PlayController />
-    {#if $mode === "TONE"}
-      <Oscillator />
-    {:else if $mode === "ACRN"}
-      <Sequence />
-    {/if}
-    <VolumeController />
+    {#await setupSettings()}
+      <article class="prose mt-5">
+        <p class="prose-h2 text-center font-serif text-xl font-bold">
+          Loading settings... <br />
+          Please wait a moment.
+        </p>
+      </article>
+      <div class="white">
+        <SyncLoader size="60" unit="px" duration="1.2s" color="#99999999" />
+      </div>
+    {:then value}
+      <ModeController />
+      <FrequencyController />
+      <PlayController />
+      {#if $mode === "TONE"}
+        <Oscillator />
+      {:else if $mode === "ACRN"}
+        <Sequence />
+      {/if}
+      <VolumeController />
+    {/await}
   </div>
 </main>
 

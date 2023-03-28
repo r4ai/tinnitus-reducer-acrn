@@ -10,9 +10,9 @@ import {
   type SettingsScheme,
 } from "./constants";
 
-const timer = writable(0); // 0 ~ SAVE_DELAY_TIME
-const settingsCache: Writable<Partial<SettingsScheme>> = writable({});
-const isSettingsChanged = writable(false);
+export const timer = writable(0); // 0 ~ SAVE_DELAY_TIME
+export const settingsCache: Writable<Partial<SettingsScheme>> = writable({});
+export const isSettingsChanged = writable(false);
 
 // TODO: Add test
 export async function loadSettings(): Promise<SettingsScheme> {
@@ -56,7 +56,6 @@ export async function saveSettings(newSettings: Partial<SettingsScheme>) {
   return settings;
 }
 
-// TODO: Add test
 export async function updateCache(newSettings: Partial<SettingsScheme>) {
   timer.set(0);
   settingsCache.update(oldSettings => ({ ...oldSettings, ...newSettings }));
@@ -75,6 +74,8 @@ export function subscribeLazySaveSettings() {
         if (get(timer) >= SAVE_DELAY_TIME - 1) {
           clearInterval(timeId);
           await saveSettings(get(settingsCache));
+          timer.set(0);
+          settingsCache.set({});
           isSettingsChanged.set(false);
         }
       }, 1000);

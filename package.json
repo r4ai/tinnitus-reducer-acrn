@@ -55,6 +55,8 @@
     "prettier-plugin-svelte": "^2.10.0",
     "prettier-plugin-tailwindcss": "^0.2.5",
     "svelte": "^3.57.0",
+    "svelte-awesome-icons": "^0.4.3",
+    "svelte-hero-icons": "^5.0.0",
     "svelte-loading-spinners": "^0.3.4",
     "svelte-preprocess": "^5.0.3",
     "svelte-range-slider-pips": "^2.1.1",

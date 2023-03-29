@@ -1,10 +1,10 @@
 import "@testing-library/jest-dom";
 import { getByRole, render, waitFor } from "@testing-library/svelte";
 import * as Tone from "tone";
-import { INITIAL_VOLUME, MAX_VOLUME, MIN_VOLUME } from "../lib/constants";
 import VolumeController, {
   setDestinationVolume,
 } from "../lib/VolumeController.svelte";
+import { INITIAL_VOLUME, MAX_VOLUME, MIN_VOLUME } from "../lib/constants";
 
 describe("setDestinationVolume", () => {
   const MIN_INFTY_VOLUME = -140;

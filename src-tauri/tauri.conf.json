@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "tinnitus-reducer-ACRN",
-    "version": "0.0.0"
+    "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {
@@ -26,6 +26,20 @@
         "scope": ["$APPCONFIG", "$APPCONFIG/*"]
       },
       "path": {
+        "all": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
+      },
+      "os": {
         "all": true
       }
     },
@@ -49,6 +63,7 @@
     },
     "windows": [
       {
+        "label": "main",
         "fullscreen": false,
         "resizable": true,
         "title": "tinnitus reducer ACRN",

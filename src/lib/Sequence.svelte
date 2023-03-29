@@ -158,8 +158,8 @@
   import type { PolySynth, Sequence, Synth, SynthOptions } from "tone";
 
   import * as Tone from "tone";
-  import { SHEET_RANDOM_FREQUENCY, SHEET_REST } from "./constants";
-  import { isPlaying, mode, frequency, bpm } from "./stores";
+  import { SHEET_RANDOM_FREQUENCY, SHEET_REST } from "./constants.js";
+  import { isPlaying, mode, frequency, bpm } from "./stores.js";
 
   let synth: PolySynth | undefined = undefined;
   let seq: Sequence | undefined = undefined;

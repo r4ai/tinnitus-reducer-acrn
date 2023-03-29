@@ -3,12 +3,14 @@ import { INITIAL_BPM, INITIAL_FREQUENCY, INITIAL_VOLUME } from "./constants";
 import { updateCache } from "./settings";
 
 export type Mode = "TONE" | "ACRN";
+export type Theme = "light" | "dark" | "system";
 
 export const frequency = writable([INITIAL_FREQUENCY]); // 0kHz to 15kHz
 export const volume = writable([INITIAL_VOLUME]); // 0 ~ 100
 export const bpm = writable([INITIAL_BPM]); // According to the paper, the cycle repetition rate was 1.5 Hz. (T = 0.66 s)
 export const mode: Writable<Mode> = writable("TONE");
 export const isPlaying = writable(false);
+export const theme = writable("light");
 
 /**
  * Subscribe to all stores and update the settings cache when the value changes.

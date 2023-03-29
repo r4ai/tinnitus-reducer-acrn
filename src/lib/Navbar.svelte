@@ -7,7 +7,6 @@
     ArrowsPointingOut,
   } from "svelte-hero-icons";
   import GithubBrand from "svelte-awesome-icons/GithubBrand.svelte";
-  import { theme } from "./stores.js";
   import { appWindow } from "@tauri-apps/api/window";
 
   const windowButtons = [
@@ -55,7 +54,21 @@
     <div class="window-buttons">
       {#each windowButtons as button}
         <button
-          class="px-2 py-1 text-black hover:bg-black hover:bg-opacity-10 dark:text-white dark:hover:bg-white dark:hover:bg-opacity-10"
+          class={`px-3 py-1 text-black ${
+            button.label === "Close" ? "hover:bg-red-500" : "hover:bg-black"
+          } ${
+            button.label === "Close"
+              ? "hover:bg-opacity-100"
+              : "hover:bg-opacity-20"
+          } dark:text-white ${
+            button.label === "Close"
+              ? "dark:hover:bg-red-500"
+              : "dark:hover:bg-white"
+          } ${
+            button.label === "Close"
+              ? "dark:hover:bg-opacity-100"
+              : "dark:hover:bg-opacity-20"
+          }`}
           on:click={button.onClick}
           aria-label={button.label}
         >

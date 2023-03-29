@@ -1,16 +1,32 @@
 <script lang="ts">
-  import { Icon, Bars3, Moon, Sun } from "svelte-hero-icons";
+  import {
+    Icon,
+    Bars3,
+    Minus,
+    XMark,
+    ArrowsPointingOut,
+  } from "svelte-hero-icons";
   import GithubBrand from "svelte-awesome-icons/GithubBrand.svelte";
   import { theme } from "./stores.js";
   import { appWindow } from "@tauri-apps/api/window";
 
-  function handleSwitchDarkMode() {
-    if ($theme === "dark") {
-      $theme = "light";
-    } else {
-      $theme = "dark";
-    }
-  }
+  const windowButtons = [
+    {
+      src: Minus,
+      label: "Minimize",
+      onClick: appWindow.minimize,
+    },
+    {
+      src: ArrowsPointingOut,
+      label: "Maximize",
+      onClick: appWindow.maximize,
+    },
+    {
+      src: XMark,
+      label: "Close",
+      onClick: appWindow.close,
+    },
+  ];
 </script>
 
 <nav
@@ -35,45 +51,22 @@
       </a>
     </div>
     <div class="spacer" />
-    <div class="right-buttons flex flex-row gap-4">
-      <!-- <label class="swap-rotate swap btn-ghost btn-sm btn-circle btn">
-        <input
-          type="checkbox"
-          checked={$theme === "dark"}
-          on:click={handleSwitchDarkMode}
-        />
-        <Icon
-          src={Moon}
-          size="20"
-          class="swap-off m-auto text-black dark:text-white"
-        />
-        <Icon
-          src={Sun}
-          size="24"
-          class="swap-on m-auto text-black dark:text-white"
-        />
-      </label> -->
-    </div>
+    <div class="right-buttons flex flex-row gap-4" />
     <div class="window-buttons">
-      <button
-        class="btn-ghost btn-sm btn text-black dark:text-white"
-        on:click={appWindow.minimize}>MINIMIZE</button
-      >
-      <button
-        class="btn-ghost btn-sm btn text-black dark:text-white"
-        on:click={appWindow.maximize}>MAXIMIZE</button
-      >
-      <button
-        class="btn-ghost btn-sm btn text-black dark:text-white"
-        on:click={appWindow.close}
-      >
-        CLOSE
-      </button>
+      {#each windowButtons as button}
+        <button
+          class="px-2 py-1 text-black hover:bg-black hover:bg-opacity-10 dark:text-white dark:hover:bg-white dark:hover:bg-opacity-10"
+          on:click={button.onClick}
+          aria-label={button.label}
+        >
+          <Icon src={button.src} size="20" mini />
+        </button>
+      {/each}
     </div>
   </div>
 </nav>
 
-<style>
+<style lang="postcss">
   .title-bar {
     display: grid;
     grid-template-columns: auto auto 1fr auto;

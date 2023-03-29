@@ -60,12 +60,12 @@
     },
     "windows": [
       {
+        "label": "main",
         "fullscreen": false,
         "resizable": true,
         "title": "tinnitus reducer ACRN",
         "width": 800,
-        "height": 600,
-        "decorations": false
+        "height": 600
       }
     ]
   }

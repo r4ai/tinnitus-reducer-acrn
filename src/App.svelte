@@ -50,9 +50,9 @@
   });
 </script>
 
-<div data-theme={$theme}>
+<div data-theme={$theme} class="h-full overflow-hidden">
   <Navbar />
-  <main class="grid h-full grid-cols-center px-3 py-5">
+  <main class="grid h-full grid-cols-center overflow-auto px-3 py-5" id="main">
     <div class="col-start-2 my-auto flex flex-col items-center gap-5">
       <h1 class="text-center font-serif text-3xl font-bold">
         Tinnitus Reducer ACRN
@@ -81,11 +81,14 @@
         {:else if $mode === "ACRN"}
           <Sequence />
         {/if}
-        <VolumeController />
+        <VolumeController class="mb-16" />
       {/await}
     </div>
   </main>
 </div>
 
 <style>
+  #main {
+    padding-top: 3.5rem;
+  }
 </style>

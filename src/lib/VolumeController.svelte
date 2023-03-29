@@ -36,14 +36,17 @@
 <script lang="ts">
   import * as Tone from "tone";
   import RangeSlider from "svelte-range-slider-pips";
-  import { volume } from "./stores";
-  import type { Destination } from "tone/build/esm/core/context/Destination";
+  import { volume } from "./stores.js";
+  import type { Destination } from "tone/build/esm/core/context/Destination.js";
+
+  let className = "";
+  export { className as class };
 
   // * Effects
   $: setDestinationVolume(Tone.getDestination(), $volume[0]);
 </script>
 
-<div class="my-3 w-full max-w-xs font-mono">
+<div class={`my-3 w-full max-w-xs font-mono ${className}`}>
   <div class="pt-2 text-center">
     <span class="font-serif text-base">volume</span>
   </div>

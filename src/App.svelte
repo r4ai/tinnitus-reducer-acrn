@@ -29,6 +29,7 @@
     $volume = [settings.volume];
     $frequency = [settings.frequency];
     $bpm = [settings.bpm];
+    $theme = settings.theme;
 
     // * Subscribe lazy save settings
     unsubscribeStores = subscribeStores();

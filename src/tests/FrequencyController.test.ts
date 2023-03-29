@@ -1,12 +1,12 @@
 import "@testing-library/jest-dom";
 import { fireEvent, getByRole, render } from "@testing-library/svelte";
 import { get } from "svelte/store";
+import FrequencyController from "../lib/FrequencyController.svelte";
 import {
   INITIAL_FREQUENCY,
   MAX_FREQUENCY,
   MIN_FREQUENCY,
 } from "../lib/constants";
-import FrequencyController from "../lib/FrequencyController.svelte";
 import { frequency } from "../lib/stores";
 
 describe("FrequencyController", () => {

@@ -73,8 +73,8 @@
 
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import { INITIAL_FREQUENCY } from "./constants";
-  import { mode, isPlaying, frequency, type Mode } from "./stores";
+  import { INITIAL_FREQUENCY } from "./constants.js";
+  import { mode, isPlaying, frequency, type Mode } from "./stores.js";
   import * as Tone from "tone";
 
   // * Create a Oscillator and connect it to the main output (your speakers)

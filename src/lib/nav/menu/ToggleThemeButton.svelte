@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { theme } from "./stores.js";
+  import { theme } from "../../stores.js";
   import { Icon, Moon, Sun } from "svelte-hero-icons";
 
   function handleSwitchDarkMode() {

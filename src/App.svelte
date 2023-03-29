@@ -18,7 +18,7 @@
   import { SyncLoader } from "svelte-loading-spinners";
   import { loadSettings, subscribeLazySaveSettings } from "./lib/settings.js";
   import type { Unsubscriber } from "svelte/store";
-  import Navbar from "./lib/Navbar.svelte";
+  import Navbar from "./lib/nav/Navbar.svelte";
 
   let unsubscribeStores: Unsubscriber[] | undefined = undefined;
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;

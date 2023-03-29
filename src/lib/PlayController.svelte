@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isPlaying } from "./stores";
+  import { isPlaying } from "./stores.js";
 
   function togglePlay() {
     isPlaying.update(value => !value);

@@ -11,20 +11,14 @@
   }
 </script>
 
-<label class="swap-rotate swap btn-ghost btn-sm btn-circle btn">
-  <input
-    type="checkbox"
-    checked={$theme === "dark"}
-    on:click={handleSwitchDarkMode}
-    aria-label="Switch color theme"
-  />
+<button on:click={handleSwitchDarkMode}>
   <Icon
-    src={Moon}
-    size="20"
-    class="swap-off m-auto text-black dark:text-white"
+    size="24"
+    src={$theme === "dark" ? Sun : Moon}
+    class="text-black dark:text-white"
   />
-  <Icon src={Sun} size="24" class="swap-on m-auto text-black dark:text-white" />
-</label>
+  <span>Enable {$theme === "dark" ? "light" : "dark"} mode</span>
+</button>
 
 <style>
 </style>

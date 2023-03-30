@@ -19,6 +19,7 @@
   import { loadSettings, subscribeLazySaveSettings } from "./lib/settings.js";
   import type { Unsubscriber } from "svelte/store";
   import Navbar from "./lib/nav/Navbar.svelte";
+  import ConfigPanel from "./lib/config_panel/ConfigPanel.svelte";
 
   let unsubscribeStores: Unsubscriber[] | undefined = undefined;
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;
@@ -82,13 +83,14 @@
         {:else if $mode === "ACRN"}
           <Sequence />
         {/if}
+        <ConfigPanel />
         <VolumeController class="mb-16" />
       {/await}
     </div>
   </main>
 </div>
 
-<style>
+<style lang="postcss">
   #main {
     padding-top: 3.5rem;
   }

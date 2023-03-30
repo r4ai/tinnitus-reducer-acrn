@@ -16,6 +16,8 @@ export const MIN_FREQUENCY = 0;
 export const MAX_FREQUENCY = 15000;
 
 export const INITIAL_BPM = 90 * 4; // According to the paper, the cycle repetition rate was 1.5 Hz. (T = 0.66 s)
+export const MAX_BPM = 90 * 6;
+export const MIN_BPM = 60;
 
 export const LOOP_REPEAT = 4;
 export const REST_LENGTH = 4;

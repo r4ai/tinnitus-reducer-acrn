@@ -10,6 +10,7 @@
     subscribeStores,
     volume,
     theme,
+    pan,
   } from "./lib/stores.js";
   import FrequencyController from "./lib/FrequencyController.svelte";
   import PlayController from "./lib/PlayController.svelte";
@@ -64,6 +65,7 @@
     $volume = [settings.volume];
     $frequency = [settings.frequency];
     $bpm = [settings.bpm];
+    $pan = [settings.pan];
     $theme = settings.theme;
   }
 

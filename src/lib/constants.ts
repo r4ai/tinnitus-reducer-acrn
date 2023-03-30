@@ -4,7 +4,7 @@ export const INITIAL_THEME = "dark";
 export const SHEET_RANDOM_FREQUENCY = 0;
 export const SHEET_REST = 1;
 
-export const SAVE_DELAY_TIME = 3; // 3 seconds
+export const SAVE_DELAY_TIME = 2; // 3 seconds
 
 /* Used for default values */
 export const INITIAL_VOLUME = -60; // -80 ~ 0 [dB]

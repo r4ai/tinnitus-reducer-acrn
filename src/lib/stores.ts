@@ -18,6 +18,8 @@ export const mode: Writable<Mode> = writable("TONE");
 export const isPlaying = writable(false);
 export const theme: Writable<Theme> = writable("light");
 
+export const clientWidth = writable(0);
+
 /**
  * Subscribe to all stores and update the settings cache when the value changes.
  * - When new stores are added, update the `SettingsScheme` and new stores must be added here to save.

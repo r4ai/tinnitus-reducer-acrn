@@ -9,7 +9,7 @@
     MAX_PAN,
     MIN_PAN,
   } from "../constants.js";
-  import { bpm, pan, volume } from "../stores.js";
+  import { bpm, clientWidth, pan, volume } from "../stores.js";
   import Slider from "./Slider.svelte";
 
   let className = "";
@@ -35,7 +35,7 @@
     values={volume}
     maxValue={MAX_VOLUME}
     minValue={MIN_VOLUME}
-    isVertical={true}
+    isVertical={$clientWidth > 540}
     suffix="dB"
     sliderProps={{
       pips: true,
@@ -73,5 +73,16 @@
       "bpm volume"
       "channel volume";
     @apply place-content-center;
+  }
+
+  @media screen and (max-width: 540px) {
+    .config-panel {
+      grid-template-columns: auto;
+      grid-template-rows: auto auto auto;
+      grid-template-areas:
+        "volume"
+        "bpm"
+        "channel";
+    }
   }
 </style>

@@ -11,6 +11,7 @@
     volume,
     theme,
     pan,
+    clientWidth,
   } from "./lib/stores.js";
   import FrequencyController from "./lib/FrequencyController.svelte";
   import PlayController from "./lib/PlayController.svelte";
@@ -81,6 +82,8 @@
     unsubscribeLazySave?.();
   });
 </script>
+
+<svelte:window bind:innerWidth={$clientWidth} />
 
 <div data-theme={$theme} class="h-full overflow-hidden">
   <Navbar />

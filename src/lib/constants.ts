@@ -27,6 +27,7 @@ export const LOOP_REPEAT = 4;
 export const REST_LENGTH = 4;
 
 /* settings */
+export const LOCAL_STORAGE_SETTINGS_KEY = "settings";
 export type SettingsScheme = {
   theme: "dark" | "light";
   frequency: number;

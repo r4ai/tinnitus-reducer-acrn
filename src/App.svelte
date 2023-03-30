@@ -16,33 +16,55 @@
   import ModeController from "./lib/ModeController.svelte";
   import Sequence from "./lib/Sequence.svelte";
   import { SyncLoader } from "svelte-loading-spinners";
-  import { loadSettings, subscribeLazySaveSettings } from "./lib/settings.js";
+  import {
+    loadSettings,
+    loadSettingsFromLocalStorage,
+    subscribeLazySaveSettings,
+  } from "./lib/settings.js";
   import type { Unsubscriber } from "svelte/store";
   import Navbar from "./lib/nav/Navbar.svelte";
   import ConfigPanel from "./lib/config_panel/ConfigPanel.svelte";
   import { isTauri } from "./lib/utils.js";
+  import type { SettingsScheme } from "./lib/constants.js";
 
   let unsubscribeStores: Unsubscriber[] | undefined = undefined;
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;
 
   async function setupSettings() {
     if (isTauri()) {
+      // * (Tauri App)
       // * Load and initialize settings
       const settings = await loadSettings();
-      $volume = [settings.volume];
-      $frequency = [settings.frequency];
-      $bpm = [settings.bpm];
-      $theme = settings.theme;
+      updateStates(settings);
 
       // * Subscribe lazy save settings
       unsubscribeStores = subscribeStores();
       unsubscribeLazySave = subscribeLazySaveSettings();
       console.info("Settings subscribed");
+
       return "settings has loaded!";
     } else {
+      // * (Browser)
+      // * Load settings from local storage and initialize
+      const settings = loadSettingsFromLocalStorage();
+      updateStates(settings);
+      console.info("Settings initialized from local storage.");
+
+      // * Subscribe lazy save settings
+      unsubscribeStores = subscribeStores();
+      unsubscribeLazySave = subscribeLazySaveSettings(1, "localStorage");
+      console.info("Settings subscribed");
+
       console.warn("Running on browser. this is experimental feature.");
       return "Running on browser.";
     }
+  }
+
+  function updateStates(settings: SettingsScheme) {
+    $volume = [settings.volume];
+    $frequency = [settings.frequency];
+    $bpm = [settings.bpm];
+    $theme = settings.theme;
   }
 
   // * Setup Tone.js

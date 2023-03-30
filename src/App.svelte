@@ -77,14 +77,14 @@
       {:then value}
         <ModeController />
         <FrequencyController />
+        <VolumeController />
         <PlayController />
         {#if $mode === "TONE"}
           <Oscillator />
         {:else if $mode === "ACRN"}
           <Sequence />
         {/if}
-        <ConfigPanel />
-        <VolumeController class="mb-16" />
+        <ConfigPanel class="mb-10" />
       {/await}
     </div>
   </main>

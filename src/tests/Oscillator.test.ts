@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import {
   createOscillator,
+  createPanner,
   playOsc,
   setFrequency,
   stopOsc,
@@ -9,7 +10,7 @@ import { INITIAL_FREQUENCY } from "../lib/constants";
 
 describe("playOsc", () => {
   test("mode=TONEのとき、oscillatorがスタートされること", () => {
-    const mockOsc = createOscillator();
+    const mockOsc = createOscillator(createPanner());
     const result = playOsc(mockOsc, "TONE");
     expect(result).toBeTruthy();
     expect(mockOsc.state).toBe("started");
@@ -17,7 +18,7 @@ describe("playOsc", () => {
   });
 
   test("mode=ACRNのとき、oscillatorがスタートされないこと", () => {
-    const mockOsc = createOscillator();
+    const mockOsc = createOscillator(createPanner());
     const result = playOsc(mockOsc, "ACRN");
     expect(result).toBeNull();
     expect(mockOsc.state).toBe("stopped");
@@ -32,7 +33,7 @@ describe("playOsc", () => {
 
 describe("stopOsc", () => {
   test("mode=TONEのとき、oscillatorがストップされること", () => {
-    const mockOsc = createOscillator();
+    const mockOsc = createOscillator(createPanner());
     playOsc(mockOsc, "TONE");
     expect(mockOsc.state).toBe("started");
 
@@ -43,7 +44,7 @@ describe("stopOsc", () => {
   });
 
   test("mode=ACRNのとき、oscillatorがストップされないこと", () => {
-    const mockOsc = createOscillator();
+    const mockOsc = createOscillator(createPanner());
     playOsc(mockOsc, "TONE");
     expect(mockOsc.state).toBe("started");
 
@@ -61,7 +62,7 @@ describe("stopOsc", () => {
 
 describe("setFrequency", () => {
   test("0以上15000以下のfrequencyを渡したとき、frequencyが設定されること", () => {
-    const mockOsc = createOscillator();
+    const mockOsc = createOscillator(createPanner());
     const result = setFrequency(mockOsc, 440);
     setTimeout(() => {
       expect(mockOsc.frequency.value).toBe(440);
@@ -71,7 +72,7 @@ describe("setFrequency", () => {
   });
 
   test("0を渡したとき、frequency=1に設定されること", () => {
-    const mockOsc = createOscillator();
+    const mockOsc = createOscillator(createPanner());
     const result = setFrequency(mockOsc, 0);
     setTimeout(() => {
       expect(mockOsc.frequency.value).toBe(1);
@@ -81,7 +82,7 @@ describe("setFrequency", () => {
   });
 
   test("0未満のfrequencyを渡したとき、frequencyが設定されないこと", () => {
-    const mockOsc = createOscillator();
+    const mockOsc = createOscillator(createPanner());
     const result = setFrequency(mockOsc, -1);
     setTimeout(() => {
       expect(mockOsc.frequency.value).toBe(INITIAL_FREQUENCY);
@@ -91,7 +92,7 @@ describe("setFrequency", () => {
   });
 
   test("15000を超えるfrequencyを渡したとき、frequencyが設定されないこと", () => {
-    const mockOsc = createOscillator();
+    const mockOsc = createOscillator(createPanner());
     const result = setFrequency(mockOsc, 15001);
     setTimeout(() => {
       expect(mockOsc.frequency.value).toBe(INITIAL_FREQUENCY);

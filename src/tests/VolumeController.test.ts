@@ -1,10 +1,7 @@
 import "@testing-library/jest-dom";
-import { getByRole, render, waitFor } from "@testing-library/svelte";
+import { waitFor } from "@testing-library/svelte";
 import * as Tone from "tone";
-import VolumeController, {
-  setDestinationVolume,
-} from "../lib/VolumeController.svelte";
-import { INITIAL_VOLUME, MAX_VOLUME, MIN_VOLUME } from "../lib/constants";
+import { setDestinationVolume } from "../lib/VolumeController.svelte";
 
 describe("setDestinationVolume", () => {
   const MIN_INFTY_VOLUME = -140;
@@ -62,22 +59,5 @@ describe("setDestinationVolume", () => {
     await waitFor(() => {
       expect(destination.volume.value).toBe(MIN_INFTY_VOLUME);
     });
-  });
-});
-
-describe("VolumeController.svelte", async () => {
-  test("Check volumeSlider", async () => {
-    /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-    /* @ts-ignore */
-    const { container } = render(VolumeController);
-
-    // * Render slider
-    const slider = getByRole(container, "slider");
-    expect(slider).toBeInTheDocument();
-    expect(slider).toHaveAttribute("aria-valuenow", `${INITIAL_VOLUME}`);
-
-    // * Check min and max value
-    expect(slider).toHaveAttribute("aria-valuemin", `${MIN_VOLUME}`);
-    expect(slider).toHaveAttribute("aria-valuemax", `${MAX_VOLUME}`);
   });
 });

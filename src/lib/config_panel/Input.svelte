@@ -7,6 +7,7 @@
   export let gridArea: "bpm" | "volume" | "channel";
   export let suffix = "";
   export let isVertical: boolean;
+  export let step = 1;
 </script>
 
 <div
@@ -23,6 +24,7 @@
     bind:value={$values[0]}
     min={minValue}
     max={maxValue}
+    {step}
   />
 </div>
 

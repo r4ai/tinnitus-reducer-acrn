@@ -5,6 +5,7 @@
 
   export let maxValue: number;
   export let minValue: number;
+  export let step = 1;
   export let values: Writable<number[]>;
   export let gridArea: "bpm" | "volume" | "channel";
   export let isVertical: boolean;
@@ -29,7 +30,15 @@
 
       {#if !isVertical}
         <Input
-          {...{ maxValue, minValue, values, gridArea, suffix, isVertical }}
+          {...{
+            maxValue,
+            minValue,
+            values,
+            gridArea,
+            suffix,
+            isVertical,
+            step,
+          }}
         />
       {/if}
     </div>
@@ -37,6 +46,7 @@
       bind:values={$values}
       max={maxValue}
       min={minValue}
+      {step}
       id={`${gridArea}-slider`}
       vertical={isVertical}
       float
@@ -45,7 +55,7 @@
     />
     {#if isVertical}
       <Input
-        {...{ maxValue, minValue, values, gridArea, suffix, isVertical }}
+        {...{ maxValue, minValue, values, gridArea, suffix, isVertical, step }}
       />
     {/if}
   </div>

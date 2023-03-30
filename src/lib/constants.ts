@@ -19,6 +19,10 @@ export const INITIAL_BPM = 90 * 4; // According to the paper, the cycle repetiti
 export const MAX_BPM = 90 * 6;
 export const MIN_BPM = 60;
 
+export const INITIAL_PAN = 0; // means center
+export const MAX_PAN = 1; // means right
+export const MIN_PAN = -1; // means left
+
 export const LOOP_REPEAT = 4;
 export const REST_LENGTH = 4;
 
@@ -28,6 +32,7 @@ export type SettingsScheme = {
   frequency: number;
   bpm: number;
   volume: number;
+  pan: number;
 };
 export const SETTINGS_FILE_NAME = "user-settings";
 export const DEFAULT_SETTINGS: SettingsScheme = {
@@ -35,4 +40,5 @@ export const DEFAULT_SETTINGS: SettingsScheme = {
   frequency: INITIAL_FREQUENCY,
   bpm: INITIAL_BPM,
   volume: INITIAL_VOLUME,
+  pan: INITIAL_PAN,
 };

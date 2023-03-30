@@ -61,27 +61,39 @@
   }
 
   /**
-   * Create a Oscillator and connect it to the main output (your speakers)
+   * Create a Panner and connect it to the main output (your speakers)
+   */
+  export function createPanner(): Tone.Panner {
+    return new Tone.Panner(INITIAL_PAN).toDestination();
+  }
+
+  /**
+   * Create a Oscillator and connect it to the panner.
+   * @param panner Panner
    * @param osc Oscillator
    * @param type Type
    * @returns Oscillator
    */
-  export function createOscillator(): Tone.Oscillator {
-    return new Tone.Oscillator(INITIAL_FREQUENCY, "sine").toDestination();
+  export function createOscillator(panner: Panner): Tone.Oscillator {
+    return new Tone.Oscillator(INITIAL_FREQUENCY, "sine").connect(panner);
   }
 </script>
 
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import { INITIAL_FREQUENCY } from "./constants.js";
-  import { mode, isPlaying, frequency, type Mode } from "./stores.js";
+  import { INITIAL_FREQUENCY, INITIAL_PAN } from "./constants.js";
+  import { mode, isPlaying, frequency, type Mode, pan } from "./stores.js";
   import * as Tone from "tone";
+  import type { Panner } from "tone";
 
   // * Create a Oscillator and connect it to the main output (your speakers)
   export let osc: Tone.Oscillator | undefined = undefined;
 
+  export let panner: Tone.Panner | undefined = undefined;
+
   onMount(() => {
-    osc = createOscillator();
+    panner = createPanner();
+    osc = createOscillator(panner);
   });
 
   onDestroy(() => {
@@ -92,6 +104,12 @@
   // * Apply the frequency to the oscillator
   $: {
     setFrequency(osc, $frequency[0]);
+  }
+
+  $: {
+    if (osc && panner) {
+      panner.pan.rampTo($pan[0], 0.05);
+    }
   }
 
   // * When the mode is changed, stop the tone

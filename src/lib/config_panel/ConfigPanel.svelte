@@ -1,16 +1,22 @@
 <script lang="ts">
+  import { match } from "ts-pattern";
   import {
     MAX_BPM,
     MIN_BPM,
     MAX_VOLUME,
     MIN_VOLUME,
     INITIAL_BPM,
+    MAX_PAN,
+    MIN_PAN,
   } from "../constants.js";
-  import { bpm, volume } from "../stores.js";
+  import { bpm, pan, volume } from "../stores.js";
   import Slider from "./Slider.svelte";
+
+  let className = "";
+  export { className as class };
 </script>
 
-<div class="config-panel w-full gap-4">
+<div class={`config-panel w-full gap-4 ${className} `}>
   <Slider
     gridArea="bpm"
     values={bpm}
@@ -35,6 +41,25 @@
       pips: true,
       pipstep: 20,
       all: "label",
+    }}
+  />
+  <Slider
+    gridArea="channel"
+    values={pan}
+    maxValue={MAX_PAN}
+    minValue={MIN_PAN}
+    isVertical={false}
+    step={0.01}
+    sliderProps={{
+      pips: true,
+      pipstep: 100,
+      all: "label",
+      formatter: value =>
+        match(value)
+          .with(0, () => "Center")
+          .with(-1, () => "Left")
+          .with(1, () => "Right")
+          .otherwise(() => value),
     }}
   />
 </div>

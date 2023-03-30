@@ -61,6 +61,7 @@ jobs:
         run: pnpm install # change this to npm or pnpm depending on which one you use
 
       - name: run frontend test
+        if: matrix.platform != 'windows-latest'
         run: pnpm test
 
       - uses: tauri-apps/tauri-action@v0

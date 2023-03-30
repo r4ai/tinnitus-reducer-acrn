@@ -14,30 +14,24 @@
   style={`--data-suffix: "${suffix}";`}
   class="flex w-24 justify-center"
 >
-  <div
-    style="min-width: fit-content"
-    class={` ${isVertical ? "mx-auto hover:w-24" : "mr-auto w-20"} `}
-    id="number-input-div"
-  >
-    <input
-      type="number"
-      id={gridArea}
-      class={`input input-xs left-0 min-w-full font-mono text-base ${
-        isVertical ? "focus:w-24" : ""
-      } `}
-      bind:value={$values[0]}
-      min={minValue}
-      max={maxValue}
-    />
-  </div>
+  <input
+    type="number"
+    id={gridArea}
+    class={`input input-xs left-0 font-mono text-base ${
+      isVertical ? "w-24" : "w-20"
+    } `}
+    bind:value={$values[0]}
+    min={minValue}
+    max={maxValue}
+  />
 </div>
 
 <style lang="postcss">
-  #number-input-div {
-    @apply relative z-10 inline-block;
+  #number-input {
+    @apply relative inline-block;
   }
 
-  #number-input-div::after {
+  #number-input::after {
     @apply absolute bottom-0 left-11 font-mono text-sm;
     content: var(--data-suffix);
   }

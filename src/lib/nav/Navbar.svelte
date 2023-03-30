@@ -2,6 +2,7 @@
   import { Icon, Bars3BottomLeft } from "svelte-hero-icons";
   import GithubBrand from "svelte-awesome-icons/GithubBrand.svelte";
   import ToggleThemeButton from "./menu/ToggleThemeButton.svelte";
+  import CustomTitleBar from "./CustomTitleBar.svelte";
 </script>
 
 <nav
@@ -42,7 +43,9 @@
     </div>
     <div class="spacer" />
     <div class="right-buttons flex flex-row gap-4" />
-    <div class="window-buttons" />
+    <div class="window-buttons">
+      <CustomTitleBar />
+    </div>
   </div>
 </nav>
 

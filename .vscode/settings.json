@@ -32,5 +32,11 @@
     "public/**",
     "src-tauri/**"
   ],
-  "cSpell.words": ["ACRN", "APPCONFIG", "Unsubscriber"]
+  "cSpell.words": [
+    "ACRN",
+    "APPCONFIG",
+    "headphonejames",
+    "Neuromodulation",
+    "Unsubscriber"
+  ]
 }

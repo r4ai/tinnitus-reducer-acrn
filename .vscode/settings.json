@@ -36,7 +36,11 @@
     "ACRN",
     "APPCONFIG",
     "headphonejames",
+    "imgs",
     "Neuromodulation",
     "Unsubscriber"
-  ]
+  ],
+  "markdownlint.config": {
+    "MD033": false // Allow inline HTML
+  }
 }

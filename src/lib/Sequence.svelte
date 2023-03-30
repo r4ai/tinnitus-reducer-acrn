@@ -76,9 +76,10 @@
   };
 
   export function createSynth(
+    panner: Panner,
     option = defaultPolySynthOption
   ): PolySynth<Synth<SynthOptions>> {
-    const synth = new Tone.PolySynth(Tone.Synth, option).toDestination();
+    const synth = new Tone.PolySynth(Tone.Synth, option).connect(panner);
     return synth;
   }
 
@@ -155,13 +156,15 @@
   import { onDestroy, onMount } from "svelte";
 
   import { derived } from "svelte/store";
-  import type { PolySynth, Sequence, Synth, SynthOptions } from "tone";
+  import type { Panner, PolySynth, Sequence, Synth, SynthOptions } from "tone";
 
   import * as Tone from "tone";
   import { SHEET_RANDOM_FREQUENCY, SHEET_REST } from "./constants.js";
-  import { isPlaying, mode, frequency, bpm } from "./stores.js";
+  import { createPanner } from "./Oscillator.svelte";
+  import { isPlaying, mode, frequency, bpm, pan } from "./stores.js";
 
   let synth: PolySynth | undefined = undefined;
+  let panner: Panner | undefined = undefined;
   let seq: Sequence | undefined = undefined;
 
   const frequencies = derived(frequency, $frequency =>
@@ -169,7 +172,8 @@
   );
 
   onMount(() => {
-    synth = createSynth();
+    panner = createPanner();
+    synth = createSynth(panner);
     console.info("Mode changed to ACRN");
     $isPlaying = false;
   });
@@ -195,6 +199,14 @@
   $: {
     Tone.Transport.bpm.rampTo($bpm[0], 0.05);
     console.log("BPM changed to", $bpm[0]);
+  }
+
+  // * Update pan
+  $: {
+    if (synth && panner) {
+      panner.pan.rampTo($pan[0], 0.05);
+      console.log("Pan changed to", $pan[0]);
+    }
   }
 
   // * Start/Stop the sequence

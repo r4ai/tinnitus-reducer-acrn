@@ -2,6 +2,7 @@ import "@testing-library/jest-dom";
 import type { PolySynth } from "tone";
 import * as Tone from "tone";
 import { describe, type SpyInstance } from "vitest";
+import { createPanner } from "../lib/Oscillator.svelte";
 import {
   createSequence,
   createSynth,
@@ -99,7 +100,7 @@ describe("generateAcrnSheet", () => {
 
 describe("createSynth", () => {
   test("デフォルトオプションでSynthを作成できる", () => {
-    const synth = createSynth();
+    const synth = createSynth(createPanner());
     expect(synth).toBeDefined();
   });
 
@@ -115,7 +116,7 @@ describe("createSynth", () => {
         release: 0.5,
       },
     };
-    const synth = createSynth(options);
+    const synth = createSynth(createPanner(), options);
     expect(synth.get().oscillator.type).toBe(options.oscillator.type);
     expect(synth.get().envelope.attack).toBe(options.envelope.attack);
     expect(synth.get().envelope.decay).toBe(options.envelope.decay);
@@ -124,7 +125,7 @@ describe("createSynth", () => {
   });
 
   test("デフォルトオプションでPolySynthを作成できる", () => {
-    const synth = createSynth();
+    const synth = createSynth(createPanner());
     expect(synth).toBeDefined();
     expect(synth).toBeInstanceOf(Tone.PolySynth);
   });
@@ -141,7 +142,7 @@ describe("createSynth", () => {
         release: 0.5,
       },
     };
-    const synth = createSynth(options);
+    const synth = createSynth(createPanner(), options);
     expect(synth.get().oscillator.type).toBe(options.oscillator.type);
     expect(synth.get().envelope.attack).toBe(options.envelope.attack);
     expect(synth.get().envelope.decay).toBe(options.envelope.decay);
@@ -150,7 +151,7 @@ describe("createSynth", () => {
   });
 
   test("Play sound with the synth", () => {
-    const synth = createSynth();
+    const synth = createSynth(createPanner());
     const note = "C4";
     synth.triggerAttackRelease(note, "8n");
   });
@@ -161,7 +162,7 @@ describe("createSequence", () => {
   let attackReleaseMock: SpyInstance;
 
   beforeEach(() => {
-    synthMock = createSynth();
+    synthMock = createSynth(createPanner());
     attackReleaseMock = vi.spyOn(synthMock, "triggerAttackRelease");
   });
 
@@ -201,7 +202,7 @@ describe("updatedSequence", () => {
 
   beforeEach(() => {
     // Arrange
-    synth = createSynth();
+    synth = createSynth(createPanner());
     frequencies = generateFrequencies(8000);
   });
 

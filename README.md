@@ -8,7 +8,14 @@ This is a simple app to help you reduce your tinnitus using <br /> ACRN (= Acous
   <img src=".github/imgs/app_image.png" width=70% />
 </p>
 
-         
+## How to install
+
+You can download the app installer from [Releases](https://github.com/r4ai/tinnitus-reducer-acrn/releases/latest) page. The app is available for Windows, macOS and Linux.  
+
+For linux, because I don't have a linux machine, I can't test the app. If you have any problem, please let me know by opening an issue. Even for other OS, please let me know if you have any problem.
+
+There are no mobile apps yet, but I am planning to make one.
+
 ## Caution
 
 - I am not a doctor. I am not responsible for any worsening of symptoms by using this application.

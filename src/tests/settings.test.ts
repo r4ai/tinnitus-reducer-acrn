@@ -65,6 +65,7 @@ describe("UpdateCache", () => {
     updateCache({ volume: -11 });
     updateCache({ volume: -9 });
     updateCache({ volume: -13 });
+    updateCache({ pan: 1 });
 
     // Assert
     expect(get(timer)).toBe(0);
@@ -73,6 +74,7 @@ describe("UpdateCache", () => {
       frequency: 3002,
       volume: -13,
       bpm: 120,
+      pan: 1,
     });
     expect(get(isSettingsChanged)).toBe(true);
   });

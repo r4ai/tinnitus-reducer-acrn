@@ -22,7 +22,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="dropdown-content menu rounded-box menu-compact mt-3 w-52 border bg-base-100 p-2 text-black shadow dark:border-gray-700 dark:text-white"
+          class="dropdown-content menu rounded-box menu-compact mt-3 w-52 border bg-base-100 p-2 text-black shadow backdrop-blur-md dark:border-gray-600 dark:text-white"
           id="menu"
         >
           <li><ToggleThemeButton /></li>

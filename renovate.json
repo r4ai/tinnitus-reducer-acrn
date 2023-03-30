@@ -3,7 +3,7 @@
   "extends": ["config:base"],
   "dependencyDashboard": false,
   "lockFileMaintenance": {
-    "enabled": false,
+    "enabled": true,
     "recreateClosed": true,
     "rebaseStalePrs": true,
     "branchTopic": "lock-file-maintenance",

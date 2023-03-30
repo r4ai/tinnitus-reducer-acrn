@@ -20,23 +20,29 @@
   import type { Unsubscriber } from "svelte/store";
   import Navbar from "./lib/nav/Navbar.svelte";
   import ConfigPanel from "./lib/config_panel/ConfigPanel.svelte";
+  import { isTauri } from "./lib/utils.js";
 
   let unsubscribeStores: Unsubscriber[] | undefined = undefined;
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;
 
   async function setupSettings() {
-    // * Load and initialize settings
-    const settings = await loadSettings();
-    $volume = [settings.volume];
-    $frequency = [settings.frequency];
-    $bpm = [settings.bpm];
-    $theme = settings.theme;
+    if (isTauri()) {
+      // * Load and initialize settings
+      const settings = await loadSettings();
+      $volume = [settings.volume];
+      $frequency = [settings.frequency];
+      $bpm = [settings.bpm];
+      $theme = settings.theme;
 
-    // * Subscribe lazy save settings
-    unsubscribeStores = subscribeStores();
-    unsubscribeLazySave = subscribeLazySaveSettings();
-    console.info("Settings subscribed");
-    return "settings has loaded!";
+      // * Subscribe lazy save settings
+      unsubscribeStores = subscribeStores();
+      unsubscribeLazySave = subscribeLazySaveSettings();
+      console.info("Settings subscribed");
+      return "settings has loaded!";
+    } else {
+      console.warn("Running on browser. this is experimental feature.");
+      return "Running on browser.";
+    }
   }
 
   // * Setup Tone.js

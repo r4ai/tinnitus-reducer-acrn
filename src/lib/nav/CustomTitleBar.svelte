@@ -3,12 +3,17 @@
   import { Icon, Minus, XMark, ArrowsPointingOut } from "svelte-hero-icons";
   import { type } from "@tauri-apps/api/os";
   import { appWindow } from "@tauri-apps/api/window";
+  import { isTauri } from "../utils.js";
 
   let isWindows = false;
 
   async function checkIsWindows() {
-    const osType = await type();
-    isWindows = osType === "Windows_NT";
+    if (isTauri()) {
+      const osType = await type();
+      isWindows = osType === "Windows_NT";
+    } else {
+      isWindows = false;
+    }
   }
 
   type WindowButtons = {

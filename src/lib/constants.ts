@@ -4,7 +4,7 @@ export const INITIAL_THEME = "dark";
 export const SHEET_RANDOM_FREQUENCY = 0;
 export const SHEET_REST = 1;
 
-export const SAVE_DELAY_TIME = 3; // 3 seconds
+export const SAVE_DELAY_TIME = 2; // 3 seconds
 
 /* Used for default values */
 export const INITIAL_VOLUME = -60; // -80 ~ 0 [dB]
@@ -27,6 +27,7 @@ export const LOOP_REPEAT = 4;
 export const REST_LENGTH = 4;
 
 /* settings */
+export const LOCAL_STORAGE_SETTINGS_KEY = "settings";
 export type SettingsScheme = {
   theme: "dark" | "light";
   frequency: number;

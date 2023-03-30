@@ -3,12 +3,16 @@
   import GithubBrand from "svelte-awesome-icons/GithubBrand.svelte";
   import ToggleThemeButton from "./menu/ToggleThemeButton.svelte";
   import CustomTitleBar from "./CustomTitleBar.svelte";
+  import { isTauri } from "../utils.js";
 </script>
 
 <nav
   class="fixed top-0 z-40 w-full text-white backdrop-blur-lg dark:backdrop-brightness-90"
 >
-  <div data-tauri-drag-region class="title-bar gap-4">
+  <div
+    data-tauri-drag-region
+    class={`title-bar gap-4 ${isTauri() ? "" : "mx-auto max-w-3xl"} `}
+  >
     <div class="menu-button pl-4">
       <div class="dropdown">
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->

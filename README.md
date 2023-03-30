@@ -2,11 +2,13 @@
 <h1 align="center">Tinnitus Reducer ACRN</h1>
 
 <p align="center">
-  <img src=".github/imgs/app_image.png" max-width=70% min-width=90% />
+This is a simple app to help you reduce your tinnitus using <br /> ACRN (= Acoustic Coordinated Reset Neuromodulation) treatment.
+</p>
+<p align="center">
+  <img src=".github/imgs/app_image.png" width=70% />
 </p>
 
-- This is a simple app to help you reduce your tinnitus using ACRN (= Acoustic Coordinated Reset Neuromodulation) treatment.
-
+         
 ## Caution
 
 - I am not a doctor. I am not responsible for any worsening of symptoms by using this application.

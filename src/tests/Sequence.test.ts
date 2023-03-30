@@ -1,8 +1,8 @@
 import "@testing-library/jest-dom";
-import { createPanner } from "src/lib/Oscillator.svelte";
 import type { PolySynth } from "tone";
 import * as Tone from "tone";
 import { describe, type SpyInstance } from "vitest";
+import { createPanner } from "../lib/Oscillator.svelte";
 import {
   createSequence,
   createSynth,

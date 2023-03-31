@@ -1,9 +1,9 @@
 <script lang="ts">
   import { Icon, Bars3BottomLeft } from "svelte-hero-icons";
-  import GithubBrand from "svelte-awesome-icons/GithubBrand.svelte";
   import ToggleThemeButton from "./menu/ToggleThemeButton.svelte";
   import CustomTitleBar from "./CustomTitleBar.svelte";
   import { isTauri } from "../utils";
+  import GitHubMark from "../icons/GitHubMark.svelte";
 </script>
 
 <nav
@@ -42,7 +42,7 @@
         href="https://github.com/r4ai/tinnitus-reducer-acrn"
         target="_blank"
       >
-        <GithubBrand class="text-black dark:text-white" />
+        <GitHubMark class="w-6 text-black dark:text-white" />
       </a>
     </div>
     <div class="spacer" />

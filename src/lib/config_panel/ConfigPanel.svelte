@@ -59,7 +59,7 @@
           .with(0, () => "Center")
           .with(-1, () => "Left")
           .with(1, () => "Right")
-          .otherwise(() => value),
+          .otherwise(() => value.toString()),
     }}
   />
 </div>

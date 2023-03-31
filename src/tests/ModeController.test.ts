@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/svelte";
 import { get } from "svelte/store";
 import ModeController from "../lib/ModeController.svelte";
-import { mode } from "../lib/stores.js";
+import { mode } from "../lib/stores";
 
 describe("ModeSwitcher component", () => {
   beforeEach(() => {

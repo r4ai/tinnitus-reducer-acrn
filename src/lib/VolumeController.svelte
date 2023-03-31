@@ -35,8 +35,8 @@
 
 <script lang="ts">
   import * as Tone from "tone";
-  import { volume } from "./stores.js";
-  import type { Destination } from "tone/build/esm/core/context/Destination.js";
+  import { volume } from "./stores";
+  import type { Destination } from "tone/build/esm/core/context/Destination";
 
   // * Effects
   $: setDestinationVolume(Tone.getDestination(), $volume[0]);

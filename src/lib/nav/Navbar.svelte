@@ -3,7 +3,7 @@
   import GithubBrand from "svelte-awesome-icons/GithubBrand.svelte";
   import ToggleThemeButton from "./menu/ToggleThemeButton.svelte";
   import CustomTitleBar from "./CustomTitleBar.svelte";
-  import { isTauri } from "../utils.js";
+  import { isTauri } from "../utils";
 </script>
 
 <nav

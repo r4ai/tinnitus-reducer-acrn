@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { mode } from "./stores.js";
+  import { mode } from "./stores";
 </script>
 
 <div class="btn-group">

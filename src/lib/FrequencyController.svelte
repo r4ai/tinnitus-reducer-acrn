@@ -1,7 +1,7 @@
 <script lang="ts">
   import RangeSlider from "svelte-range-slider-pips";
-  import { MAX_FREQUENCY, MIN_FREQUENCY } from "./constants.js";
-  import { frequency } from "./stores.js";
+  import { MAX_FREQUENCY, MIN_FREQUENCY } from "./constants";
+  import { frequency } from "./stores";
 
   // * States
   let sliderWidth;

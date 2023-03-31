@@ -159,9 +159,9 @@
   import type { Panner, PolySynth, Sequence, Synth, SynthOptions } from "tone";
 
   import * as Tone from "tone";
-  import { SHEET_RANDOM_FREQUENCY, SHEET_REST } from "./constants.js";
+  import { SHEET_RANDOM_FREQUENCY, SHEET_REST } from "./constants";
   import { createPanner } from "./Oscillator.svelte";
-  import { isPlaying, mode, frequency, bpm, pan } from "./stores.js";
+  import { isPlaying, mode, frequency, bpm, pan } from "./stores";
 
   let synth: PolySynth | undefined = undefined;
   let panner: Panner | undefined = undefined;

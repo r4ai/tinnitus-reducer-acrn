@@ -12,7 +12,7 @@
     theme,
     pan,
     clientWidth,
-  } from "./lib/stores.js";
+  } from "./lib/stores";
   import FrequencyController from "./lib/FrequencyController.svelte";
   import PlayController from "./lib/PlayController.svelte";
   import ModeController from "./lib/ModeController.svelte";
@@ -22,12 +22,12 @@
     loadSettings,
     loadSettingsFromLocalStorage,
     subscribeLazySaveSettings,
-  } from "./lib/settings.js";
+  } from "./lib/settings";
   import type { Unsubscriber } from "svelte/store";
   import Navbar from "./lib/nav/Navbar.svelte";
   import ConfigPanel from "./lib/config_panel/ConfigPanel.svelte";
-  import { isTauri } from "./lib/utils.js";
-  import type { SettingsScheme } from "./lib/constants.js";
+  import { isTauri } from "./lib/utils";
+  import type { SettingsScheme } from "./lib/constants";
 
   let unsubscribeStores: Unsubscriber[] | undefined = undefined;
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;

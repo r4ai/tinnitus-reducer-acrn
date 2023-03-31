@@ -6,8 +6,8 @@ import {
   INITIAL_FREQUENCY,
   MAX_FREQUENCY,
   MIN_FREQUENCY,
-} from "../lib/constants.js";
-import { frequency } from "../lib/stores.js";
+} from "../lib/constants";
+import { frequency } from "../lib/stores";
 
 describe("FrequencyController", () => {
   test("min and max should be 0 and 15000", async () => {

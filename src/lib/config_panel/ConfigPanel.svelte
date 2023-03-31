@@ -8,8 +8,8 @@
     INITIAL_BPM,
     MAX_PAN,
     MIN_PAN,
-  } from "../constants.js";
-  import { bpm, clientWidth, pan, volume } from "../stores.js";
+  } from "../constants";
+  import { bpm, clientWidth, pan, volume } from "../stores";
   import Slider from "./Slider.svelte";
 
   let className = "";

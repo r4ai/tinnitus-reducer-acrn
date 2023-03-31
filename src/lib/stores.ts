@@ -4,8 +4,8 @@ import {
   INITIAL_FREQUENCY,
   INITIAL_PAN,
   INITIAL_VOLUME,
-} from "./constants.js";
-import { updateCache } from "./settings.js";
+} from "./constants";
+import { updateCache } from "./settings";
 
 export type Mode = "TONE" | "ACRN";
 export type Theme = "light" | "dark";

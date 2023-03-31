@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/svelte";
 import { get } from "svelte/store";
 import PlayController from "../lib/PlayController.svelte";
-import { isPlaying } from "../lib/stores.js";
+import { isPlaying } from "../lib/stores";
 
 describe("PlayController.svelte", async () => {
   test("check does playButton work", async () => {

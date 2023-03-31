@@ -1,9 +1,15 @@
 <script lang="ts">
   import { onMount, type SvelteComponent } from "svelte";
-  import { Icon, Minus, XMark, ArrowsPointingOut } from "svelte-hero-icons";
+  import {
+    Icon,
+    Minus,
+    XMark,
+    ArrowsPointingOut,
+    type IconSource,
+  } from "svelte-hero-icons";
   import { type } from "@tauri-apps/api/os";
   import { appWindow } from "@tauri-apps/api/window";
-  import { isTauri } from "../utils.js";
+  import { isTauri } from "../utils";
 
   let isWindows = false;
 
@@ -17,7 +23,7 @@
   }
 
   type WindowButtons = {
-    src: SvelteComponent;
+    src: IconSource;
     label: "Minimize" | "Maximize" | "Close";
     onClick: () => void;
   };

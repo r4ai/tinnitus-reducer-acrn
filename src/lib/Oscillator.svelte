@@ -81,8 +81,8 @@
 
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import { INITIAL_FREQUENCY, INITIAL_PAN } from "./constants.js";
-  import { mode, isPlaying, frequency, type Mode, pan } from "./stores.js";
+  import { INITIAL_FREQUENCY, INITIAL_PAN } from "./constants";
+  import { mode, isPlaying, frequency, type Mode, pan } from "./stores";
   import * as Tone from "tone";
   import type { Panner } from "tone";
 

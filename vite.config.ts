@@ -1,7 +1,8 @@
 import { svelte } from "@sveltejs/vite-plugin-svelte";
+import { resolve } from "path";
 import sveltePreprocess from "svelte-preprocess";
-import removeConsole from "vite-plugin-remove-console";
 /// <reference types="vitest" />
+import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
 
 const mobile =
@@ -11,6 +12,11 @@ const mobile =
 // https://vitejs.dev/config/
 /** @type {import('vite').UserConfig} */
 export default defineConfig(async () => ({
+  resolve: {
+    alias: {
+      svelte: resolve(__dirname, "node_modules/svelte"),
+    },
+  },
   plugins: [
     svelte({
       preprocess: [
@@ -19,7 +25,8 @@ export default defineConfig(async () => ({
         }),
       ],
     }),
-    removeConsole(),
+    tsconfigPaths(),
+    // removeConsole(),
   ],
   test: {
     include: ["src/tests/**/*.{js,ts}"],
@@ -35,6 +42,7 @@ export default defineConfig(async () => ({
   define: {
     "import.meta.vitest": undefined,
   },
+  base: "./",
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   // prevent vite from obscuring rust errors

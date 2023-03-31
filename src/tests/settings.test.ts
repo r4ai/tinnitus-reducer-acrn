@@ -5,7 +5,7 @@ import {
   settingsCache,
   timer,
   updateCache,
-} from "../lib/settings";
+} from "../lib/settings.js";
 
 describe("UpdateCache", () => {
   beforeEach(() => {

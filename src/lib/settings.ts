@@ -1,16 +1,16 @@
-import { get, writable, type Writable } from "svelte/store";
-import { getAll } from "tauri-settings";
-import { STATUS } from "tauri-settings/dist/fs/ensure-settings-file";
-import { saveSettings as saveAll } from "tauri-settings/dist/fs/load-save";
-import { match } from "ts-pattern";
 import {
   DEFAULT_SETTINGS,
   LOCAL_STORAGE_SETTINGS_KEY,
   SAVE_DELAY_TIME,
   SETTINGS_FILE_NAME,
   type SettingsScheme,
-} from "./constants";
-import { isTauri } from "./utils";
+} from "@/lib/constants.js";
+import { get, writable, type Writable } from "svelte/store";
+import { getAll } from "tauri-settings";
+import { STATUS } from "tauri-settings/dist/fs/ensure-settings-file.js";
+import { saveSettings as saveAll } from "tauri-settings/dist/fs/load-save.js";
+import { match } from "ts-pattern";
+import { isTauri } from "./utils.js";
 
 export const timer = writable(0); // 0 ~ SAVE_DELAY_TIME
 export const settingsCache: Writable<Partial<SettingsScheme>> = writable({});

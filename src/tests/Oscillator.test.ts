@@ -6,7 +6,7 @@ import {
   setFrequency,
   stopOsc,
 } from "../lib/Oscillator.svelte";
-import { INITIAL_FREQUENCY } from "../lib/constants";
+import { INITIAL_FREQUENCY } from "../lib/constants.js";
 
 describe("playOsc", () => {
   test("mode=TONEのとき、oscillatorがスタートされること", () => {

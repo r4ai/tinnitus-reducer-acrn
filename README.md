@@ -10,9 +10,15 @@ This is a simple app to help you reduce your tinnitus using <br /> ACRN (= Acous
 
 ## How to install
 
-You can download the app installer from [Releases](https://github.com/r4ai/tinnitus-reducer-acrn/releases/latest) page. The app is available for Windows, macOS and Linux.  
+This app is available as:
 
-For linux, because I don't have a linux machine, I can't test the app. If you have any problem, please let me know by opening an issue. Even for other OS, please let me know if you have any problem.
+- Desktop app:
+  - Windows
+  - MacOS
+  - Linux
+- Web app: https://r4ai.github.io/tinnitus-reducer-acrn/
+
+For desktop app, you can download the app installer from [Releases](https://github.com/r4ai/tinnitus-reducer-acrn/releases/latest) page.
 
 There are no mobile apps yet, but I am planning to make one.
 
@@ -38,3 +44,9 @@ This app is heavily inspired by following softwares:
 - [Acoustic CR® Neuromodulation: a New Treatment for Tinnitus | TinnitusTalk](https://www.tinnitustalk.com/threads/acoustic-cr%C2%AE-neuromodulation-a-new-treatment-for-tinnitus.219/)
 - [Success Using the Acoustic Coordinated Reset Neuromodulation (ACRN) Treatment | TinnitusTalk](https://www.tinnitustalk.com/threads/success-using-the-acoustic-coordinated-reset-neuromodulation-acrn-treatment.21747/)
 - [Maybe old but this video is a great reminder of how ACRN works to reduce tinnitus. | Reddit](https://www.reddit.com/r/tinnitus/comments/8u52we/maybe_old_but_this_video_is_a_great_reminder_of)
+
+## Development
+
+I do not have a Linux machine and therefore cannot test the Linux version of the app. If you find any bugs, please open an issue and let me know. Even on other operating systems, if you find any problems, please let me know.
+
+If you have any ideas you would like to see implemented in this app, feel free to open a new issue and let me know.

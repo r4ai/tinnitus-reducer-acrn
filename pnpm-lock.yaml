@@ -138,9 +138,6 @@ devDependencies:
   vite:
     specifier: ^4.2.1
     version: 4.2.1(@types/node@18.15.10)
-  vite-plugin-remove-console:
-    specifier: ^2.1.0
-    version: 2.1.0
   vite-tsconfig-paths:
     specifier: ^4.0.7
     version: 4.0.7(typescript@5.0.2)(vite@4.2.1)
@@ -5253,10 +5250,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
-
-  /vite-plugin-remove-console@2.1.0:
-    resolution: {integrity: sha512-cil+h4rX3fDnnKMt73fexMGkwRSOV08+lTAzLGTRjGyxs9Ync3fqPWxnGrngJY7LyMMt3kEKf0hNOi+1DQ0j2g==}
     dev: true
 
   /vite-tsconfig-paths@4.0.7(typescript@5.0.2)(vite@4.2.1):

@@ -11,7 +11,7 @@ const mobile =
 
 // https://vitejs.dev/config/
 /** @type {import('vite').UserConfig} */
-export default defineConfig(async () => ({
+export default defineConfig(async ({ mode }) => ({
   resolve: {
     alias: {
       svelte: resolve(__dirname, "node_modules/svelte"),
@@ -62,5 +62,8 @@ export default defineConfig(async () => ({
     minify: !process.env.TAURI_DEBUG ? "esbuild" : false,
     // produce sourcemaps for debug builds
     sourcemap: !!process.env.TAURI_DEBUG,
+  },
+  esbuild: {
+    drop: mode === "production" ? ["console", "debugger"] : [],
   },
 }));

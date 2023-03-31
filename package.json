@@ -64,7 +64,6 @@
     "tslib": "^2.5.0",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
-    "vite-plugin-remove-console": "^2.1.0",
     "vite-tsconfig-paths": "^4.0.7",
     "vitest": "^0.29.7",
     "webdriverio": "^8.6.9"

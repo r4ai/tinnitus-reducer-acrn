@@ -1,13 +1,12 @@
-name: "publish"
-on:
-  push:
-    branches:
-      - main
+name: "test-on-pr"
+on: [pull_request]
 
 jobs:
-  publish-tauri:
-    permissions:
-      contents: write
+  run-frontend-test:
+    uses: ./.github/workflows/run-frontend-test.yml
+
+  run-tauri-build-test:
+    needs: [run-frontend-test]
     strategy:
       fail-fast: false
       matrix:
@@ -17,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: setup node
+      - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -43,33 +42,24 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: install Rust stable
+      - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
 
-      - name: chache cargo
+      - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: "src-tauri -> target"
 
-      - name: install dependencies (ubuntu only)
+      - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
 
-      - name: install frontend dependencies
-        run: pnpm install # change this to npm or pnpm depending on which one you use
+      - name: Install frontend dependencies
+        run: pnpm install
 
-      - name: run frontend test
-        if: matrix.platform != 'windows-latest'
-        run: pnpm test
-
-      - uses: tauri-apps/tauri-action@v0
+      - name: Build tauri app
+        uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: "App v__VERSION__"
-          releaseBody: "See the assets to download this version and install."
-          releaseDraft: true
-          prerelease: false

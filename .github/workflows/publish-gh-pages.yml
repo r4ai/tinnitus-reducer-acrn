@@ -2,7 +2,8 @@ name: publish-gh-pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - "main"
 
 permissions:
   contents: read
@@ -10,8 +11,11 @@ permissions:
   id-token: write
 
 jobs:
-  # Build job
+  run-frontend-test:
+    uses: ./.github/workflows/run-frontend-test.yml
+
   build:
+    needs: [run-frontend-test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

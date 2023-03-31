@@ -1,4 +1,4 @@
-name: "test-on-pr"
+name: run-build-test-on-pr
 on: [pull_request]
 
 jobs:

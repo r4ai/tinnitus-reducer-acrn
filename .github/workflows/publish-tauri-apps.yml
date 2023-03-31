@@ -1,4 +1,4 @@
-name: "publish"
+name: publish-tauri-apps
 on:
   push:
     branches:

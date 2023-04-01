@@ -146,11 +146,10 @@
         maxValue={MAX_REST_LENGTH}
         minValue={MIN_REST_LENGTH}
         isVertical={false}
-        step={1}
+        step={4}
         class="w-80"
         sliderProps={{
           pips: true,
-          step: 4,
           pipstep: 2,
           all: "label",
         }}

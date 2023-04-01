@@ -1,3 +1,5 @@
+import type { SequenceOption } from "./stores";
+
 /* Used for internal purposes */
 export const INITIAL_THEME = "dark";
 
@@ -25,6 +27,12 @@ export const MIN_PAN = -1; // means left
 
 export const LOOP_REPEAT = 4;
 export const REST_LENGTH = 4;
+
+export const DEFAULT_SEQUENCE_OPTION: SequenceOption = {
+  loopRepeat: 3,
+  restLength: 2,
+  duration: "4n",
+};
 
 /* settings */
 export const LOCAL_STORAGE_SETTINGS_KEY = "settings";

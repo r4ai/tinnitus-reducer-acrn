@@ -1,3 +1,4 @@
+import { DEFAULT_SEQUENCE_OPTION } from "@/lib/constants";
 import "@testing-library/jest-dom";
 import type { PolySynth } from "tone";
 import * as Tone from "tone";
@@ -6,7 +7,6 @@ import { createPanner } from "../lib/Oscillator.svelte";
 import {
   createSequence,
   createSynth,
-  defaultSequenceOption,
   generateAcrnSheet,
   generateFrequencies,
   shuffledFrequencies,
@@ -47,9 +47,12 @@ describe("generateFrequencies", () => {
 describe("shuffledFrequencies", () => {
   test("returns shuffled array", () => {
     const input = [1, 2, 3, 4, 5, 6];
-    const result = shuffledFrequencies(input);
-    while (result === input) {
-      shuffledFrequencies(input);
+    let result;
+    for (let i = 0; i < 100; i++) {
+      result = shuffledFrequencies(input);
+      if (result === input) {
+        break;
+      }
     }
     expect(result).not.toEqual(input);
   }, 50);
@@ -190,7 +193,7 @@ describe("createSequence", () => {
 
   test("default option", async () => {
     const frequencies = generateFrequencies(8000);
-    const { loopRepeat, restLength } = defaultSequenceOption;
+    const { loopRepeat, restLength } = DEFAULT_SEQUENCE_OPTION;
     const seq = createSequence(synthMock, frequencies);
     expect(seq.events).toEqual(generateAcrnSheet(loopRepeat, restLength));
     expect(seq.loop).toBe(true);

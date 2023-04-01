@@ -83,18 +83,6 @@
     return synth;
   }
 
-  export type SequenceOption = {
-    loopRepeat: number;
-    restLength: number;
-    duration: Tone.Unit.Time;
-  };
-
-  export const defaultSequenceOption: SequenceOption = {
-    loopRepeat: 3,
-    restLength: 2,
-    duration: "4n",
-  };
-
   /**
    * Create a sequence of frequencies and start it.
    * TODO: Refactor the code inside the Tone.Sequence
@@ -105,7 +93,7 @@
   export function createSequence(
     synth: PolySynth | Synth,
     frequencies: number[],
-    { loopRepeat, restLength, duration } = defaultSequenceOption
+    { loopRepeat, restLength, duration } = DEFAULT_SEQUENCE_OPTION
   ): Sequence {
     let currentFrequencies = shuffledFrequencies(frequencies);
 
@@ -139,7 +127,7 @@
     oldSeq: Sequence | undefined,
     synth: PolySynth | Synth | undefined,
     frequencies: number[],
-    option = defaultSequenceOption
+    option = DEFAULT_SEQUENCE_OPTION
   ): Sequence | undefined {
     if (synth) {
       oldSeq?.dispose();
@@ -159,7 +147,11 @@
   import type { Panner, PolySynth, Sequence, Synth, SynthOptions } from "tone";
 
   import * as Tone from "tone";
-  import { SHEET_RANDOM_FREQUENCY, SHEET_REST } from "./constants";
+  import {
+    DEFAULT_SEQUENCE_OPTION,
+    SHEET_RANDOM_FREQUENCY,
+    SHEET_REST,
+  } from "./constants";
   import { createPanner } from "./Oscillator.svelte";
   import { isPlaying, mode, frequency, bpm, pan } from "./stores";
 

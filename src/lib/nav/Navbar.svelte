@@ -11,15 +11,19 @@
 >
   <div
     data-tauri-drag-region
-    class={`title-bar gap-4 ${isTauri() ? "" : "mx-auto max-w-3xl"} `}
+    class={`title-bar gap-4 ${isTauri() ? "" : "mx-auto h-14 max-w-3xl"} `}
   >
     <div class="menu-button pl-4">
       <div class="dropdown">
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-        <label tabindex="0" class="btn-ghost btn-sm btn-circle btn" for="menu">
+        <label
+          tabindex="0"
+          class={`btn-ghost ${isTauri() ? "btn-sm" : "btn-md"} btn-circle btn`}
+          for="menu"
+        >
           <Icon
             src={Bars3BottomLeft}
-            size="24"
+            size={isTauri() ? "24" : "30"}
             class="text-black dark:text-white"
           />
         </label>
@@ -34,8 +38,10 @@
       </div>
     </div>
     <div class="title-text flex flex-row items-center gap-2">
-      <span class="text-md ml-1 font-serif text-black dark:text-white"
-        >Tinnitus Reducer ACRN</span
+      <span
+        class={`ml-1 font-serif text-black dark:text-white ${
+          isTauri() ? "text-md" : "text-lg"
+        } `}>Tinnitus Reducer ACRN</span
       >
       <a
         class="btn-ghost btn-sm btn-circle btn"

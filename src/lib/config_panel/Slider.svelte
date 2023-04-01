@@ -17,7 +17,7 @@
 </script>
 
 <div
-  class={`card-compact card border shadow-xl dark:border-white/10 ${className} }`}
+  class={`card card-compact border shadow-xl dark:border-white/10 ${className} }`}
   style={`grid-area: ${gridArea};`}
 >
   <div class={`card-body ${isVertical ? "items-center" : ""} `}>

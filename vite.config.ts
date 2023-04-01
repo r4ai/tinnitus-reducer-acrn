@@ -26,7 +26,6 @@ export default defineConfig(async ({ mode }) => ({
       ],
     }),
     tsconfigPaths(),
-    // removeConsole(),
   ],
   test: {
     include: ["src/tests/**/*.{js,ts}"],

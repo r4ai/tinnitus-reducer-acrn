@@ -12,6 +12,9 @@
     theme,
     pan,
     clientWidth,
+    loopRepeat,
+    restLength,
+    duration,
   } from "./lib/stores";
   import FrequencyController from "./lib/FrequencyController.svelte";
   import PlayController from "./lib/PlayController.svelte";
@@ -27,7 +30,7 @@
   import Navbar from "./lib/nav/Navbar.svelte";
   import ConfigPanel from "./lib/config_panel/ConfigPanel.svelte";
   import { isTauri } from "./lib/utils";
-  import type { SettingsScheme } from "./lib/constants";
+  import type { SettingsScheme } from "./lib/stores";
 
   let unsubscribeStores: Unsubscriber[] | undefined = undefined;
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;
@@ -68,6 +71,9 @@
     $bpm = [settings.bpm];
     $pan = [settings.pan];
     $theme = settings.theme;
+    $loopRepeat = [settings.loopRepeat];
+    $restLength = [settings.restLength];
+    $duration = [settings.duration];
   }
 
   // * Setup Tone.js

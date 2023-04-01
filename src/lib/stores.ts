@@ -28,6 +28,16 @@ export type Duration =
   | "64n"
   | "128n"
   | "256n";
+export type SettingsScheme = {
+  theme: "dark" | "light";
+  frequency: number;
+  bpm: number;
+  volume: number;
+  pan: number;
+  loopRepeat: number;
+  restLength: number;
+  duration: Duration;
+};
 
 export const frequency = writable([INITIAL_FREQUENCY]); // 0kHz to 15kHz
 export const volume = writable([INITIAL_VOLUME]); // 0 ~ 100
@@ -35,7 +45,7 @@ export const bpm = writable([INITIAL_BPM]); // According to the paper, the cycle
 export const pan = writable([INITIAL_PAN]); // -1 ~ 1
 export const loopRepeat = writable([DEFAULT_LOOP_REPEAT]);
 export const restLength = writable([DEFAULT_REST_LENGTH]);
-export const duration: Writable<Unit.Time[]> = writable([DEFAULT_DURATION]);
+export const duration: Writable<Duration[]> = writable([DEFAULT_DURATION]);
 export const mode: Writable<Mode> = writable("TONE");
 export const isPlaying = writable(false);
 export const theme: Writable<Theme> = writable("light");
@@ -61,6 +71,15 @@ export function subscribeStores() {
     }),
     pan.subscribe(value => {
       updateCache({ pan: value[0] });
+    }),
+    loopRepeat.subscribe(value => {
+      updateCache({ loopRepeat: value[0] });
+    }),
+    restLength.subscribe(value => {
+      updateCache({ restLength: value[0] });
+    }),
+    duration.subscribe(value => {
+      updateCache({ duration: value[0] });
     }),
   ];
   return unsubscribe;

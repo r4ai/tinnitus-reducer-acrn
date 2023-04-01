@@ -3,13 +3,13 @@ import {
   LOCAL_STORAGE_SETTINGS_KEY,
   SAVE_DELAY_TIME,
   SETTINGS_FILE_NAME,
-  type SettingsScheme,
 } from "@/lib/constants";
 import { get, writable, type Writable } from "svelte/store";
 import { getAll } from "tauri-settings";
 import { STATUS } from "tauri-settings/dist/fs/ensure-settings-file";
 import { saveSettings as saveAll } from "tauri-settings/dist/fs/load-save";
 import { match } from "ts-pattern";
+import type { SettingsScheme } from "./stores";
 import { isTauri } from "./utils";
 
 export const timer = writable(0); // 0 ~ SAVE_DELAY_TIME

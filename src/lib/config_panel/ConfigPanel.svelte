@@ -9,8 +9,9 @@
 </script>
 
 <script lang="ts">
-  import { writable } from "svelte/store";
+  import { onMount } from "svelte";
 
+  import { writable, type Writable } from "svelte/store";
   import { match } from "ts-pattern";
   import {
     MAX_BPM,
@@ -26,6 +27,7 @@
     MIN_LOOP_REPEAT,
     MAX_REST_LENGTH,
     MIN_REST_LENGTH,
+    DEFAULT_DURATION,
   } from "../constants";
   import {
     bpm,
@@ -54,7 +56,10 @@
     "1n",
   ];
 
-  let durationInput = writable([3]);
+  const durationIndex = match(subdivisions.findIndex(v => v === $duration[0]))
+    .with(-1, () => subdivisions.indexOf(DEFAULT_DURATION)) // When error, use DEFAULT_DURATION
+    .otherwise(index => index);
+  let durationInput = writable([durationIndex]);
 
   $: $duration = [subdivisions[$durationInput[0]]];
 </script>

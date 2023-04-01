@@ -1,4 +1,4 @@
-import type { Duration, SequenceOption } from "./stores";
+import type { Duration, SequenceOption, SettingsScheme } from "./stores";
 
 /* Used for internal purposes */
 export const INITIAL_THEME = "dark";
@@ -54,13 +54,6 @@ export const DEFAULT_SEQUENCE_OPTION: SequenceOption = {
 
 /* settings */
 export const LOCAL_STORAGE_SETTINGS_KEY = "settings";
-export type SettingsScheme = {
-  theme: "dark" | "light";
-  frequency: number;
-  bpm: number;
-  volume: number;
-  pan: number;
-};
 export const SETTINGS_FILE_NAME = "user-settings";
 export const DEFAULT_SETTINGS: SettingsScheme = {
   theme: INITIAL_THEME,
@@ -68,4 +61,7 @@ export const DEFAULT_SETTINGS: SettingsScheme = {
   bpm: INITIAL_BPM,
   volume: INITIAL_VOLUME,
   pan: INITIAL_PAN,
+  loopRepeat: DEFAULT_LOOP_REPEAT,
+  restLength: DEFAULT_REST_LENGTH,
+  duration: DEFAULT_DURATION,
 };

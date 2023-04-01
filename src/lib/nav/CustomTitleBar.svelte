@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, type SvelteComponent } from "svelte";
+  import { onMount } from "svelte";
   import {
     Icon,
     Minus,
@@ -24,7 +24,7 @@
 
   type WindowButtons = {
     src: IconSource;
-    label: "Minimize" | "Maximize" | "Close";
+    label: "Minimize" | "ToggleMaximize" | "Close";
     onClick: () => void;
   };
   const windowButtons: WindowButtons[] = [
@@ -35,8 +35,8 @@
     },
     {
       src: ArrowsPointingOut,
-      label: "Maximize",
-      onClick: appWindow.maximize,
+      label: "ToggleMaximize",
+      onClick: appWindow.toggleMaximize,
     },
     {
       src: XMark,

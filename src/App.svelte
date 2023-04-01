@@ -89,7 +89,7 @@
   <Navbar />
   <main class="grid h-full grid-cols-center overflow-auto px-3 py-5" id="main">
     <div class="col-start-2 my-auto flex flex-col items-center gap-5">
-      <h1 class="text-center font-serif text-3xl font-bold">
+      <h1 class="mt-2 text-center font-serif text-3xl font-bold">
         Tinnitus Reducer ACRN
       </h1>
       <p class="text-center font-serif text-lg">

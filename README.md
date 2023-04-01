@@ -50,3 +50,9 @@ This app is heavily inspired by following softwares:
 I do not have a Linux machine and therefore cannot test the Linux version of the app. If you find any bugs, please open an issue and let me know. Even on other operating systems, if you find any problems, please let me know.
 
 If you have any ideas you would like to see implemented in this app, feel free to open a new issue and let me know.
+
+## License
+
+This software is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
+
+The app icon uses Fluent Emoji, which is published by Microsoft under the MIT License. The full license can be found in ThirdPartyNotices.txt.

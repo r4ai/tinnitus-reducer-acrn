@@ -48,8 +48,11 @@ describe("shuffledFrequencies", () => {
   test("returns shuffled array", () => {
     const input = [1, 2, 3, 4, 5, 6];
     const result = shuffledFrequencies(input);
+    while (result === input) {
+      shuffledFrequencies(input);
+    }
     expect(result).not.toEqual(input);
-  });
+  }, 50);
 
   test("returns same array when input has one element", () => {
     const input = [1];

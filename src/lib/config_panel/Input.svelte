@@ -1,10 +1,11 @@
 <script lang="ts">
   import type { Writable } from "svelte/store";
+  import type { GridArea } from "./ConfigPanel.svelte";
 
   export let maxValue: number;
   export let minValue: number;
   export let values: Writable<number[]>;
-  export let gridArea: "bpm" | "volume" | "channel";
+  export let gridArea: GridArea;
   export let suffix = "";
   export let isVertical: boolean;
   export let step = 1;

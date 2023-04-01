@@ -19,6 +19,7 @@
   "vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
   "prettier.documentSelectors": ["**/*.svelte"],
   "prettier.configPath": ".prettierrc.yaml",
+  "prettier.ignorePath": ".prettierignore",
   "[svelte]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

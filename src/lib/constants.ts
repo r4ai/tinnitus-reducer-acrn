@@ -1,3 +1,4 @@
+import type { Unit } from "tone";
 import type { SequenceOption } from "./stores";
 
 /* Used for internal purposes */
@@ -25,13 +26,31 @@ export const INITIAL_PAN = 0; // means center
 export const MAX_PAN = 1; // means right
 export const MIN_PAN = -1; // means left
 
-export const LOOP_REPEAT = 4;
-export const REST_LENGTH = 4;
+/**
+ * The number of times the sequence will repeat.
+ */
+export const DEFAULT_LOOP_REPEAT = 3;
+export const MIN_LOOP_REPEAT = 1;
+export const MAX_LOOP_REPEAT = 10;
+
+/**
+ * The number of rests in the sequence.
+ */
+export const DEFAULT_REST_LENGTH = 2 * 4;
+export const MIN_REST_LENGTH = 0;
+export const MAX_REST_LENGTH = 16 * 4;
+
+/**
+ * The duration of the note in the sequence.
+ */
+export const DEFAULT_DURATION: Unit.Time = "4n"; // 4n = 1/4
+export const MIN_DURATION: Unit.Time = "16n"; // 16n = 1/16
+export const MAX_DURATION: Unit.Time = "1n"; // 1n = 1/1
 
 export const DEFAULT_SEQUENCE_OPTION: SequenceOption = {
-  loopRepeat: 3,
-  restLength: 2,
-  duration: "4n",
+  loopRepeat: DEFAULT_LOOP_REPEAT,
+  restLength: DEFAULT_REST_LENGTH,
+  duration: DEFAULT_DURATION,
 };
 
 /* settings */

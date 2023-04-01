@@ -68,7 +68,9 @@
         "resizable": true,
         "title": "tinnitus reducer ACRN",
         "width": 800,
-        "height": 600
+        "minWidth": 450,
+        "height": 600,
+        "minHeight": 200
       }
     ]
   }

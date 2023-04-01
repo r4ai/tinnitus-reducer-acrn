@@ -1,7 +1,9 @@
 import { writable, type Writable } from "svelte/store";
 import type { Unit } from "tone";
 import {
-  DEFAULT_SEQUENCE_OPTION,
+  DEFAULT_DURATION,
+  DEFAULT_LOOP_REPEAT,
+  DEFAULT_REST_LENGTH,
   INITIAL_BPM,
   INITIAL_FREQUENCY,
   INITIAL_PAN,
@@ -21,13 +23,12 @@ export const frequency = writable([INITIAL_FREQUENCY]); // 0kHz to 15kHz
 export const volume = writable([INITIAL_VOLUME]); // 0 ~ 100
 export const bpm = writable([INITIAL_BPM]); // According to the paper, the cycle repetition rate was 1.5 Hz. (T = 0.66 s)
 export const pan = writable([INITIAL_PAN]); // -1 ~ 1
-export const sequenceOption: Writable<SequenceOption> = writable(
-  DEFAULT_SEQUENCE_OPTION
-);
+export const loopRepeat = writable([DEFAULT_LOOP_REPEAT]);
+export const restLength = writable([DEFAULT_REST_LENGTH]);
+export const duration = writable([DEFAULT_DURATION]);
 export const mode: Writable<Mode> = writable("TONE");
 export const isPlaying = writable(false);
 export const theme: Writable<Theme> = writable("light");
-
 export const clientWidth = writable(0);
 
 /**

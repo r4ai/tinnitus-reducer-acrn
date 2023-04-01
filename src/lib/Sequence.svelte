@@ -83,18 +83,6 @@
     return synth;
   }
 
-  export type SequenceOption = {
-    loopRepeat: number;
-    restLength: number;
-    duration: Tone.Unit.Time;
-  };
-
-  export const defaultSequenceOption: SequenceOption = {
-    loopRepeat: 3,
-    restLength: 2,
-    duration: "4n",
-  };
-
   /**
    * Create a sequence of frequencies and start it.
    * TODO: Refactor the code inside the Tone.Sequence
@@ -105,7 +93,7 @@
   export function createSequence(
     synth: PolySynth | Synth,
     frequencies: number[],
-    { loopRepeat, restLength, duration } = defaultSequenceOption
+    { loopRepeat, restLength, duration } = DEFAULT_SEQUENCE_OPTION
   ): Sequence {
     let currentFrequencies = shuffledFrequencies(frequencies);
 
@@ -139,7 +127,7 @@
     oldSeq: Sequence | undefined,
     synth: PolySynth | Synth | undefined,
     frequencies: number[],
-    option = defaultSequenceOption
+    option = DEFAULT_SEQUENCE_OPTION
   ): Sequence | undefined {
     if (synth) {
       oldSeq?.dispose();
@@ -155,13 +143,27 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
 
-  import { derived } from "svelte/store";
+  import { derived, type Readable } from "svelte/store";
   import type { Panner, PolySynth, Sequence, Synth, SynthOptions } from "tone";
 
   import * as Tone from "tone";
-  import { SHEET_RANDOM_FREQUENCY, SHEET_REST } from "./constants";
+  import {
+    DEFAULT_SEQUENCE_OPTION,
+    SHEET_RANDOM_FREQUENCY,
+    SHEET_REST,
+  } from "./constants";
   import { createPanner } from "./Oscillator.svelte";
-  import { isPlaying, mode, frequency, bpm, pan } from "./stores";
+  import {
+    isPlaying,
+    mode,
+    frequency,
+    bpm,
+    pan,
+    loopRepeat,
+    restLength,
+    duration,
+    type SequenceOption,
+  } from "./stores";
 
   let synth: PolySynth | undefined = undefined;
   let panner: Panner | undefined = undefined;
@@ -169,6 +171,14 @@
 
   const frequencies = derived(frequency, $frequency =>
     generateFrequencies($frequency[0])
+  );
+  const sequenceOption: Readable<SequenceOption> = derived(
+    [loopRepeat, restLength, duration],
+    ([$loopRepeat, $restLength, $duration]) => ({
+      loopRepeat: $loopRepeat[0],
+      restLength: $restLength[0],
+      duration: $duration[0],
+    })
   );
 
   onMount(() => {
@@ -187,11 +197,7 @@
   // * Generate sequence of frequencies
   $: {
     if ($isPlaying) {
-      seq = updatedSequence(seq, synth, $frequencies, {
-        loopRepeat: 3,
-        restLength: 2 * 4,
-        duration: "4n",
-      });
+      seq = updatedSequence(seq, synth, $frequencies, $sequenceOption);
     }
   }
 

@@ -1,3 +1,5 @@
+import type { Duration, SequenceOption, SettingsScheme } from "./stores";
+
 /* Used for internal purposes */
 export const INITIAL_THEME = "dark";
 
@@ -23,18 +25,35 @@ export const INITIAL_PAN = 0; // means center
 export const MAX_PAN = 1; // means right
 export const MIN_PAN = -1; // means left
 
-export const LOOP_REPEAT = 4;
-export const REST_LENGTH = 4;
+/**
+ * The number of times the sequence will repeat.
+ */
+export const DEFAULT_LOOP_REPEAT = 3;
+export const MIN_LOOP_REPEAT = 1;
+export const MAX_LOOP_REPEAT = 10;
+
+/**
+ * The number of rests in the sequence.
+ */
+export const DEFAULT_REST_LENGTH = 2 * 4;
+export const MIN_REST_LENGTH = 0;
+export const MAX_REST_LENGTH = 16 * 4;
+
+/**
+ * The duration of the note in the sequence.
+ */
+export const DEFAULT_DURATION: Duration = "4n"; // 4n = 1/4
+export const MIN_DURATION: Duration = "128n"; // 16n = 1/16
+export const MAX_DURATION: Duration = "1n"; // 1n = 1/1
+
+export const DEFAULT_SEQUENCE_OPTION: SequenceOption = {
+  loopRepeat: DEFAULT_LOOP_REPEAT,
+  restLength: DEFAULT_REST_LENGTH,
+  duration: DEFAULT_DURATION,
+};
 
 /* settings */
 export const LOCAL_STORAGE_SETTINGS_KEY = "settings";
-export type SettingsScheme = {
-  theme: "dark" | "light";
-  frequency: number;
-  bpm: number;
-  volume: number;
-  pan: number;
-};
 export const SETTINGS_FILE_NAME = "user-settings";
 export const DEFAULT_SETTINGS: SettingsScheme = {
   theme: INITIAL_THEME,
@@ -42,4 +61,7 @@ export const DEFAULT_SETTINGS: SettingsScheme = {
   bpm: INITIAL_BPM,
   volume: INITIAL_VOLUME,
   pan: INITIAL_PAN,
+  loopRepeat: DEFAULT_LOOP_REPEAT,
+  restLength: DEFAULT_REST_LENGTH,
+  duration: DEFAULT_DURATION,
 };

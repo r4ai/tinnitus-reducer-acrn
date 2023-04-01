@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "tinnitus-reducer-ACRN",
-    "version": "0.1.3"
+    "version": "0.2.0"
   },
   "tauri": {
     "allowlist": {
@@ -68,7 +68,9 @@
         "resizable": true,
         "title": "tinnitus reducer ACRN",
         "width": 800,
-        "height": 600
+        "minWidth": 450,
+        "height": 600,
+        "minHeight": 200
       }
     ]
   }

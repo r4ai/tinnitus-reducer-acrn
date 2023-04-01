@@ -2,12 +2,13 @@
   import RangeSlider, { type RangeSliderProps } from "svelte-range-slider-pips";
   import Input from "./Input.svelte";
   import type { Writable } from "svelte/store";
+  import type { GridArea } from "./ConfigPanel.svelte";
 
   export let maxValue: number;
   export let minValue: number;
   export let step = 1;
   export let values: Writable<number[]>;
-  export let gridArea: "bpm" | "volume" | "channel";
+  export let gridArea: GridArea;
   export let isVertical: boolean;
   export let suffix = "";
   export let sliderProps: RangeSliderProps = {};
@@ -17,14 +18,16 @@
 </script>
 
 <div
-  class={`card card-compact border shadow-xl dark:border-white/10 ${className} }`}
+  class={`card-compact card border shadow-xl dark:border-white/10 ${className} }`}
   style={`grid-area: ${gridArea};`}
 >
   <div class={`card-body ${isVertical ? "items-center" : ""} `}>
     <div class="card-title">
       <div>
         <label class="font-mono text-base" for={gridArea}>
-          {gridArea.toLocaleUpperCase()}{isVertical ? "" : ":"}
+          {gridArea
+            .replaceAll(/[A-Z]/g, s => " " + s.charAt(0))
+            .toUpperCase()}{isVertical ? "" : ":"}
         </label>
       </div>
 

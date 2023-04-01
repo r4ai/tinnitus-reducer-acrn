@@ -1,5 +1,9 @@
 import { writable, type Writable } from "svelte/store";
+import type { Unit } from "tone";
 import {
+  DEFAULT_DURATION,
+  DEFAULT_LOOP_REPEAT,
+  DEFAULT_REST_LENGTH,
   INITIAL_BPM,
   INITIAL_FREQUENCY,
   INITIAL_PAN,
@@ -9,15 +13,42 @@ import { updateCache } from "./settings";
 
 export type Mode = "TONE" | "ACRN";
 export type Theme = "light" | "dark";
+export type SequenceOption = {
+  loopRepeat: number;
+  restLength: number;
+  duration: Unit.Time;
+};
+export type Duration =
+  | "1n"
+  | "2n"
+  | "4n"
+  | "8n"
+  | "16n"
+  | "32n"
+  | "64n"
+  | "128n"
+  | "256n";
+export type SettingsScheme = {
+  theme: "dark" | "light";
+  frequency: number;
+  bpm: number;
+  volume: number;
+  pan: number;
+  loopRepeat: number;
+  restLength: number;
+  duration: Duration;
+};
 
 export const frequency = writable([INITIAL_FREQUENCY]); // 0kHz to 15kHz
 export const volume = writable([INITIAL_VOLUME]); // 0 ~ 100
 export const bpm = writable([INITIAL_BPM]); // According to the paper, the cycle repetition rate was 1.5 Hz. (T = 0.66 s)
 export const pan = writable([INITIAL_PAN]); // -1 ~ 1
+export const loopRepeat = writable([DEFAULT_LOOP_REPEAT]);
+export const restLength = writable([DEFAULT_REST_LENGTH]);
+export const duration: Writable<Duration[]> = writable([DEFAULT_DURATION]);
 export const mode: Writable<Mode> = writable("TONE");
 export const isPlaying = writable(false);
 export const theme: Writable<Theme> = writable("light");
-
 export const clientWidth = writable(0);
 
 /**
@@ -40,6 +71,15 @@ export function subscribeStores() {
     }),
     pan.subscribe(value => {
       updateCache({ pan: value[0] });
+    }),
+    loopRepeat.subscribe(value => {
+      updateCache({ loopRepeat: value[0] });
+    }),
+    restLength.subscribe(value => {
+      updateCache({ restLength: value[0] });
+    }),
+    duration.subscribe(value => {
+      updateCache({ duration: value[0] });
     }),
   ];
   return unsubscribe;

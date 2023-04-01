@@ -1,5 +1,4 @@
-import type { Unit } from "tone";
-import type { SequenceOption } from "./stores";
+import type { Duration, SequenceOption } from "./stores";
 
 /* Used for internal purposes */
 export const INITIAL_THEME = "dark";
@@ -43,9 +42,9 @@ export const MAX_REST_LENGTH = 16 * 4;
 /**
  * The duration of the note in the sequence.
  */
-export const DEFAULT_DURATION: Unit.Time = "4n"; // 4n = 1/4
-export const MIN_DURATION: Unit.Time = "16n"; // 16n = 1/16
-export const MAX_DURATION: Unit.Time = "1n"; // 1n = 1/1
+export const DEFAULT_DURATION: Duration = "4n"; // 4n = 1/4
+export const MIN_DURATION: Duration = "128n"; // 16n = 1/16
+export const MAX_DURATION: Duration = "1n"; // 1n = 1/1
 
 export const DEFAULT_SEQUENCE_OPTION: SequenceOption = {
   loopRepeat: DEFAULT_LOOP_REPEAT,

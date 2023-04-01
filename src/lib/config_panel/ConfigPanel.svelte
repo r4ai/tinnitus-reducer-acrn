@@ -35,32 +35,23 @@
     pan,
     restLength,
     volume,
+    type Duration,
   } from "../stores";
   import Slider from "./Slider.svelte";
 
   let className = "";
   export { className as class };
 
-  type Subdivision =
-    | "1n"
-    | "2n"
-    | "4n"
-    | "8n"
-    | "16n"
-    | "32n"
-    | "64n"
-    | "128n"
-    | "256n";
-  const subdivisions: Subdivision[] = [
-    "1n",
-    "2n",
-    "4n",
-    "8n",
-    "16n",
-    "32n",
-    "64n",
-    "128n",
+  const subdivisions: Duration[] = [
     "256n",
+    "128n",
+    "64n",
+    "32n",
+    "16n",
+    "8n",
+    "4n",
+    "2n",
+    "1n",
   ];
 
   let durationInput = writable([3]);
@@ -124,8 +115,8 @@
       <Slider
         gridArea="duration"
         values={durationInput}
-        maxValue={subdivisions.length - 1 - 2}
-        minValue={0}
+        maxValue={subdivisions.findIndex(e => e === MAX_DURATION)}
+        minValue={subdivisions.findIndex(e => e === MIN_DURATION)}
         step={1}
         isVertical={$clientWidth > 540}
         sliderProps={{

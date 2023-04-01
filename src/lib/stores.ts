@@ -18,6 +18,16 @@ export type SequenceOption = {
   restLength: number;
   duration: Unit.Time;
 };
+export type Duration =
+  | "1n"
+  | "2n"
+  | "4n"
+  | "8n"
+  | "16n"
+  | "32n"
+  | "64n"
+  | "128n"
+  | "256n";
 
 export const frequency = writable([INITIAL_FREQUENCY]); // 0kHz to 15kHz
 export const volume = writable([INITIAL_VOLUME]); // 0 ~ 100
@@ -25,7 +35,7 @@ export const bpm = writable([INITIAL_BPM]); // According to the paper, the cycle
 export const pan = writable([INITIAL_PAN]); // -1 ~ 1
 export const loopRepeat = writable([DEFAULT_LOOP_REPEAT]);
 export const restLength = writable([DEFAULT_REST_LENGTH]);
-export const duration = writable([DEFAULT_DURATION]);
+export const duration: Writable<Unit.Time[]> = writable([DEFAULT_DURATION]);
 export const mode: Writable<Mode> = writable("TONE");
 export const isPlaying = writable(false);
 export const theme: Writable<Theme> = writable("light");

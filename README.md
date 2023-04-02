@@ -78,7 +78,7 @@ $ pnpm tauri build
 
 ### Visualized repository
 
-![Visualized repository](https://r4ai.github.io/tinnitus-reducer-acrn/visualized_repo.svg)
+![Visualized repository](https://r4ai.github.io/tinnitus-reducer-acrn/visualized-repo.svg)
 
 ## License
 

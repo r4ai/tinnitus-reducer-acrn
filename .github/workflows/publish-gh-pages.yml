@@ -21,6 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Repo Visualizer
+        uses: githubocto/repo-visualizer@0.8.2
+        with:
+          output_file: "public/visualized-repo.svg"
+          should_push: false
+          excluded_paths: ".github,.vscode,icon,public,pnpm-lock.yaml,src-tauri/icons"
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -49,13 +56,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Repo Visualizer
-        uses: githubocto/repo-visualizer@0.8.2
-        with:
-          output_file: "public/visualized-repo.svg"
-          should_push: false
-          excluded_paths: ".github,.vscode,icon,public,pnpm-lock.yaml"
 
       - name: Build
         run: pnpm build

@@ -3,19 +3,7 @@
   import { onDestroy, onMount } from "svelte";
   import Oscillator from "./lib/Oscillator.svelte";
   import VolumeController from "./lib/VolumeController.svelte";
-  import {
-    bpm,
-    frequency,
-    mode,
-    subscribeStores,
-    volume,
-    theme,
-    pan,
-    clientWidth,
-    loopRepeat,
-    restLength,
-    duration,
-  } from "./lib/stores";
+  import { mode, subscribeStores, theme, clientWidth } from "./lib/stores";
   import FrequencyController from "./lib/FrequencyController.svelte";
   import PlayController from "./lib/PlayController.svelte";
   import ModeController from "./lib/ModeController.svelte";
@@ -25,12 +13,13 @@
     loadSettings,
     loadSettingsFromLocalStorage,
     subscribeLazySaveSettings,
+    updateStores,
   } from "./lib/settings";
   import type { Unsubscriber } from "svelte/store";
   import Navbar from "./lib/nav/Navbar.svelte";
   import ConfigPanel from "./lib/config_panel/ConfigPanel.svelte";
   import { isTauri } from "./lib/utils";
-  import type { SettingsScheme } from "./lib/stores";
+  import Toast from "./lib/nav/Toast.svelte";
 
   let unsubscribeStores: Unsubscriber[] | undefined = undefined;
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;
@@ -40,7 +29,7 @@
       // * (Tauri App)
       // * Load and initialize settings
       const settings = await loadSettings();
-      updateStates(settings);
+      updateStores(settings);
 
       // * Subscribe lazy save settings
       unsubscribeStores = subscribeStores();
@@ -52,7 +41,7 @@
       // * (Browser)
       // * Load settings from local storage and initialize
       const settings = loadSettingsFromLocalStorage();
-      updateStates(settings);
+      updateStores(settings);
       console.info("Settings initialized from local storage.");
 
       // * Subscribe lazy save settings
@@ -63,17 +52,6 @@
       console.warn("Running on browser. this is experimental feature.");
       return "Running on browser.";
     }
-  }
-
-  function updateStates(settings: SettingsScheme) {
-    $volume = [settings.volume];
-    $frequency = [settings.frequency];
-    $bpm = [settings.bpm];
-    $pan = [settings.pan];
-    $theme = settings.theme;
-    $loopRepeat = [settings.loopRepeat];
-    $restLength = [settings.restLength];
-    $duration = [settings.duration];
   }
 
   // * Setup Tone.js
@@ -127,6 +105,7 @@
       {/await}
     </div>
   </main>
+  <Toast />
 </div>
 
 <style lang="postcss">

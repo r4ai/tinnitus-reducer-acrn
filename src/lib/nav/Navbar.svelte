@@ -4,6 +4,8 @@
   import CustomTitleBar from "./CustomTitleBar.svelte";
   import { isTauri } from "../utils";
   import GitHubMark from "../icons/GitHubMark.svelte";
+  import ExportConfigButton from "./menu/ExportConfigButton.svelte";
+  import ImportConfigButton from "./menu/ImportConfigButton.svelte";
 </script>
 
 <nav
@@ -34,6 +36,8 @@
           id="menu"
         >
           <li><ToggleThemeButton /></li>
+          <li><ImportConfigButton /></li>
+          <li><ExportConfigButton /></li>
         </ul>
       </div>
     </div>

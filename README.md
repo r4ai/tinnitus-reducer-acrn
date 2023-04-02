@@ -14,7 +14,7 @@ This app is available as:
 
 - Desktop app:
   - Windows
-  - MacOS
+  - macOS
   - Linux
 - Web app: https://r4ai.github.io/tinnitus-reducer-acrn/
 
@@ -49,7 +49,32 @@ This app is heavily inspired by following softwares:
 
 I do not have a Linux machine and therefore cannot test the Linux version of the app. If you find any bugs, please open an issue and let me know. Even on other operating systems, if you find any problems, please let me know.
 
-If you have any ideas you would like to see implemented in this app, feel free to open a new issue and let me know.
+If you have any ideas you would like to see implemented in this app, feel free to open a new issue and let me know. **Any kinds of contributions are welcome!!**
+
+### Commands
+
+```bash
+# Install dependencies
+$ pnpm i
+
+# Run the dev app
+$ pnpm tauri dev
+
+# Build the app
+$ pnpm tauri build
+```
+
+### Technology stack
+
+- Framework: [Tauri](https://tauri.studio/)
+- Frontend:
+  - Language: TypeScript
+  - Framework: Svelte
+  - Audio: [tone.js](https://tonejs.github.io/)
+  - UI: TailwindCSS, DaisyUI, svelte-range-slider-pips
+  - Icons: Fluent Emoji, Heroicons
+- Backend:
+  - Language: Rust
 
 ## License
 

@@ -5,7 +5,7 @@
 This is a simple app to help you reduce your tinnitus using <br /> ACRN (= Acoustic Coordinated Reset Neuromodulation) treatment.
 </p>
 <p align="center">
-  <img src=".github/imgs/app_image.png" width=70% />
+  <img src=".github/imgs/app_image.png" width=85% />
 </p>
 
 ## How to install
@@ -75,6 +75,10 @@ $ pnpm tauri build
   - Icons: Fluent Emoji, Heroicons
 - Backend:
   - Language: Rust
+
+### Visualized repository
+
+![Visualized repository](https://r4ai.github.io/tinnitus-reducer-acrn/visualized_repo.svg)
 
 ## License
 

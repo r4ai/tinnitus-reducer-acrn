@@ -55,6 +55,7 @@ jobs:
         with:
           output_file: "public/visualized-repo.svg"
           should_push: false
+          excluded_paths: ".github,.vscode,icon,public,pnpm-lock.yaml"
 
       - name: Build
         run: pnpm build

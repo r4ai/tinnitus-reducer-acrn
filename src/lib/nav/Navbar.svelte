@@ -36,8 +36,10 @@
           id="menu"
         >
           <li><ToggleThemeButton /></li>
-          <li><ImportConfigButton /></li>
-          <li><ExportConfigButton /></li>
+          {#if isTauri()}
+            <li><ExportConfigButton /></li>
+            <li><ImportConfigButton /></li>
+          {/if}
         </ul>
       </div>
     </div>

@@ -4,7 +4,7 @@ import {
   SAVE_DELAY_TIME,
   SETTINGS_FILE_NAME,
 } from "@/lib/constants";
-import { basename, dirname } from "@tauri-apps/api/path";
+import { appConfigDir, basename, dirname, join } from "@tauri-apps/api/path";
 import { get, writable, type Writable } from "svelte/store";
 import { getAll } from "tauri-settings";
 import { STATUS } from "tauri-settings/dist/fs/ensure-settings-file";
@@ -26,6 +26,10 @@ import { isTauri } from "./utils";
 export const timer = writable(0); // 0 ~ SAVE_DELAY_TIME
 export const settingsCache: Writable<Partial<SettingsScheme>> = writable({});
 export const isSettingsChanged = writable(false);
+
+export async function getDefaultSettingsPath() {
+  return await join(await appConfigDir(), `${SETTINGS_FILE_NAME}.json`);
+}
 
 // TODO: Add test
 export async function loadSettings(path = ""): Promise<SettingsScheme> {

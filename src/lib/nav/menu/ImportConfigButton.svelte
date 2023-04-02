@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { SETTINGS_FILE_NAME } from "@/lib/constants";
   import {
+    getDefaultSettingsPath,
     loadSettings,
-    saveSettings,
-    settingsCache,
     updateStores,
   } from "@/lib/settings";
   import { isTauri } from "@/lib/utils";
@@ -12,19 +10,12 @@
 
   async function importConfig() {
     if (isTauri()) {
-      const { appConfigDir } = await import("@tauri-apps/api/path");
       const { open } = await import("@tauri-apps/api/dialog");
-      const { join } = await import("@tauri-apps/api/path");
-
-      const defaultPath = await join(
-        await appConfigDir(),
-        `${SETTINGS_FILE_NAME}.json`
-      );
 
       const filePath = await open({
         title: "Import Configuration",
         multiple: false,
-        defaultPath,
+        defaultPath: await getDefaultSettingsPath(),
         filters: [
           {
             name: "JSON",

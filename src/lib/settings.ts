@@ -9,7 +9,17 @@ import { getAll } from "tauri-settings";
 import { STATUS } from "tauri-settings/dist/fs/ensure-settings-file";
 import { saveSettings as saveAll } from "tauri-settings/dist/fs/load-save";
 import { match } from "ts-pattern";
-import type { SettingsScheme } from "./stores";
+import {
+  bpm,
+  duration,
+  frequency,
+  loopRepeat,
+  pan,
+  restLength,
+  theme,
+  volume,
+  type SettingsScheme,
+} from "./stores";
 import { isTauri } from "./utils";
 
 export const timer = writable(0); // 0 ~ SAVE_DELAY_TIME
@@ -143,4 +153,15 @@ export function subscribeLazySaveSettings(
     }
   });
   return unsubscribe;
+}
+
+export function updateStores(settings: SettingsScheme) {
+  volume.set([settings.volume]);
+  frequency.set([settings.frequency]);
+  bpm.set([settings.bpm]);
+  pan.set([settings.pan]);
+  theme.set(settings.theme);
+  loopRepeat.set([settings.loopRepeat]);
+  restLength.set([settings.restLength]);
+  duration.set([settings.duration]);
 }

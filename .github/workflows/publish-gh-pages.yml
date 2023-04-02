@@ -26,7 +26,7 @@ jobs:
         with:
           output_file: "public/visualized-repo.svg"
           should_push: false
-          excluded_paths: ".github,.vscode,icon,public,pnpm-lock.yaml,src-tauri/icons"
+          excluded_paths: ".github,.vscode,icon,public,pnpm-lock.yaml,src-tauri/icons,node_modules"
 
       - name: Setup Node
         uses: actions/setup-node@v3

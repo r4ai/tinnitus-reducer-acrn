@@ -23,7 +23,7 @@
         "readDir": true,
         "readFile": true,
         "writeFile": true,
-        "scope": ["$APPCONFIG", "$APPCONFIG/*"]
+        "scope": ["**"]
       },
       "path": {
         "all": true
@@ -41,6 +41,14 @@
       },
       "os": {
         "all": true
+      },
+      "dialog": {
+        "all": false,
+        "ask": false,
+        "confirm": false,
+        "message": false,
+        "open": true,
+        "save": true
       }
     },
     "bundle": {

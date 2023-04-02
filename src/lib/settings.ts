@@ -4,6 +4,7 @@ import {
   SAVE_DELAY_TIME,
   SETTINGS_FILE_NAME,
 } from "@/lib/constants";
+import { basename, dirname } from "@tauri-apps/api/path";
 import { get, writable, type Writable } from "svelte/store";
 import { getAll } from "tauri-settings";
 import { STATUS } from "tauri-settings/dist/fs/ensure-settings-file";
@@ -27,16 +28,21 @@ export const settingsCache: Writable<Partial<SettingsScheme>> = writable({});
 export const isSettingsChanged = writable(false);
 
 // TODO: Add test
-export async function loadSettings(): Promise<SettingsScheme> {
+export async function loadSettings(path = ""): Promise<SettingsScheme> {
   console.info("Start loading settings...");
   // * Get settings
   const {
     status,
     path: filePath,
     settings: oldSettings,
-  } = await getAll<SettingsScheme>({
-    fileName: SETTINGS_FILE_NAME,
-  });
+  } = path === ""
+    ? await getAll<SettingsScheme>({
+        fileName: SETTINGS_FILE_NAME,
+      })
+    : await getAll<SettingsScheme>({
+        fileName: `${await basename(path)}.json`,
+        dir: await dirname(path),
+      });
   const newSettings: SettingsScheme = match(status)
     .with(STATUS.FILE_CREATED, () => ({ ...DEFAULT_SETTINGS }))
     .with(STATUS.FILE_EXISTS, () => ({
@@ -46,24 +52,33 @@ export async function loadSettings(): Promise<SettingsScheme> {
     .exhaustive();
 
   // * Apply settings
-  await saveAll<SettingsScheme>(oldSettings, filePath, {
+  await saveAll<SettingsScheme>(newSettings, filePath, {
     fileName: SETTINGS_FILE_NAME,
   });
 
-  console.info("Settings loaded", oldSettings);
+  console.info("Settings loaded", newSettings);
   return newSettings;
 }
 
 // TODO: Add test
-export async function saveSettings(newSettings: Partial<SettingsScheme>) {
+export async function saveSettings(
+  newSettings: Partial<SettingsScheme>,
+  path = ""
+) {
   const { settings: oldSettings, path: filePath } =
     await getAll<SettingsScheme>({
       fileName: SETTINGS_FILE_NAME,
     });
   const settings = { ...oldSettings, ...newSettings };
-  await saveAll<SettingsScheme>(settings, filePath, {
-    fileName: SETTINGS_FILE_NAME,
-  });
+  if (path === "") {
+    await saveAll<SettingsScheme>(settings, filePath, {
+      fileName: SETTINGS_FILE_NAME,
+    });
+  } else {
+    await saveAll<SettingsScheme>(settings, path, {
+      fileName: SETTINGS_FILE_NAME,
+    });
+  }
   console.info(`Settings saved to ${filePath}`, settings);
   return settings;
 }

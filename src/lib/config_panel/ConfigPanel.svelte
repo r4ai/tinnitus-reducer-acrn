@@ -79,7 +79,7 @@
         class="w-80"
         sliderProps={{
           pips: true,
-          pipstep: (INITIAL_BPM - MIN_BPM) / 1,
+          pipstep: 60,
           all: "label",
         }}
       />

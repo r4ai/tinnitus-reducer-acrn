@@ -3,9 +3,10 @@
   import { updateStores } from "@/lib/settings";
   import { Icon, ArrowPath } from "svelte-hero-icons";
   import { showToast } from "../Toast.svelte";
+  import { theme } from "@/lib/stores";
 
   function resetConfig() {
-    updateStores(DEFAULT_SETTINGS);
+    updateStores({ ...DEFAULT_SETTINGS, theme: $theme });
   }
 
   function handleClick() {

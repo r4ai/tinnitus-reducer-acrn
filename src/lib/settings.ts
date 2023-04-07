@@ -174,6 +174,10 @@ export function subscribeLazySaveSettings(
   return unsubscribe;
 }
 
+/**
+ * Update stores with settings.
+ * - For developer: Need to be changed if new settings are added.
+ */
 export function updateStores(settings: SettingsScheme) {
   volume.set([settings.volume]);
   frequency.set([settings.frequency]);

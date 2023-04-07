@@ -39,6 +39,7 @@ export type SettingsScheme = {
   duration: Duration;
 };
 
+// * Config
 export const frequency = writable([INITIAL_FREQUENCY]); // 0kHz to 15kHz
 export const volume = writable([INITIAL_VOLUME]); // 0 ~ 100
 export const bpm = writable([INITIAL_BPM]); // According to the paper, the cycle repetition rate was 1.5 Hz. (T = 0.66 s)
@@ -47,6 +48,8 @@ export const loopRepeat = writable([DEFAULT_LOOP_REPEAT]);
 export const restLength = writable([DEFAULT_REST_LENGTH]);
 export const duration: Writable<Duration[]> = writable([DEFAULT_DURATION]);
 export const mode: Writable<Mode> = writable("TONE");
+
+// * Internal
 export const isPlaying = writable(false);
 export const theme: Writable<Theme> = writable("light");
 export const clientWidth = writable(0);
@@ -54,6 +57,7 @@ export const clientWidth = writable(0);
 /**
  * Subscribe to all stores and update the settings cache when the value changes.
  * - When new stores are added, update the `SettingsScheme` and new stores must be added here to save.
+ * - Also, need to update the `updateStore` function in `src/lib/settings.ts`.
  */
 export function subscribeStores() {
   const unsubscribe = [

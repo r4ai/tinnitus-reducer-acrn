@@ -6,6 +6,7 @@
   import GitHubMark from "../icons/GitHubMark.svelte";
   import ExportConfigButton from "./menu/ExportConfigButton.svelte";
   import ImportConfigButton from "./menu/ImportConfigButton.svelte";
+  import ResetConfigButton from "./menu/ResetConfigButton.svelte";
 </script>
 
 <nav
@@ -40,6 +41,7 @@
             <li><ExportConfigButton /></li>
             <li><ImportConfigButton /></li>
           {/if}
+          <li><ResetConfigButton /></li>
         </ul>
       </div>
     </div>

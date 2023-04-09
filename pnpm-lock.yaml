@@ -117,6 +117,9 @@ devDependencies:
   svelte:
     specifier: ^3.57.0
     version: 3.57.0
+  svelte-canvas:
+    specifier: ^0.9.3
+    version: 0.9.3
   svelte-hero-icons:
     specifier: ^5.0.0
     version: 5.0.0
@@ -5263,6 +5266,12 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  /svelte-canvas@0.9.3:
+    resolution: {integrity: sha512-sGYivBdOjAbYSHtzzcwqXGu40Mgj1/GhTLLMH5tYyGdZo2XdJz07+AvapSxtSGIggJ2aDuStYBW6YvK5rLxW+Q==}
+    dependencies:
+      svelte: 3.57.0
+    dev: true
 
   /svelte-check@3.1.4(postcss@8.4.21)(svelte@3.57.0):
     resolution: {integrity: sha512-25Lb46ZS4IK/XpBMe4IBMrtYf23V8alqBX+szXoccb7uM0D2Wqq5rMRzYBONZnFVuU1bQG3R50lyIT5eRewv2g==}

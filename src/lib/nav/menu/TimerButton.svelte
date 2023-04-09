@@ -3,7 +3,7 @@
 </script>
 
 <!-- The button to open modal -->
-<label for="my-modal-5">
+<label for="modal-timer">
   <Icon size="24" src={Clock} class="text-black dark:text-white" />
   <span>Timer</span>
 </label>

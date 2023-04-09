@@ -20,6 +20,7 @@
   import ConfigPanel from "./lib/config_panel/ConfigPanel.svelte";
   import { isTauri } from "./lib/utils";
   import Toast from "./lib/nav/Toast.svelte";
+  import Modal from "./lib/nav/Modal.svelte";
 
   let unsubscribeStores: Unsubscriber[] | undefined = undefined;
   let unsubscribeLazySave: Unsubscriber | undefined = undefined;
@@ -105,6 +106,7 @@
       {/await}
     </div>
   </main>
+  <Modal />
   <Toast />
 </div>
 

@@ -7,6 +7,7 @@
   import ExportConfigButton from "./menu/ExportConfigButton.svelte";
   import ImportConfigButton from "./menu/ImportConfigButton.svelte";
   import ResetConfigButton from "./menu/ResetConfigButton.svelte";
+  import TimerButton from "./menu/TimerButton.svelte";
 </script>
 
 <nav
@@ -42,6 +43,7 @@
             <li><ImportConfigButton /></li>
           {/if}
           <li><ResetConfigButton /></li>
+          <li><TimerButton /></li>
         </ul>
       </div>
     </div>

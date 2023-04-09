@@ -1,65 +1,63 @@
 <script lang="ts">
   import { Layer, type Render, type CanvasLayerEvent } from "svelte-canvas";
   import { spring } from "svelte/motion";
+  import type { Writable } from "svelte/store";
+  import type { PointPos } from "./Bar.svelte";
+  import { BORDER } from "./Chart.svelte";
 
-  export let x: number, y: number, color: string, reorder: (id: string) => void;
+  export let canvasHeight: number;
+  export let color: string;
+  export let pos: Writable<PointPos>;
 
   let render: Render;
   let dragging = false;
 
-  const _x = spring(x, { stiffness: 0.15, damping: 0.2 });
-  const _y = spring(y, { stiffness: 0.15, damping: 0.2 });
-  const radius = spring(80, { stiffness: 0.15, damping: 0.2 });
+  const radius = spring(10, { stiffness: 0.15, damping: 0.2 });
 
   $: render = ({ context }) => {
     context.globalCompositeOperation = "screen";
     context.fillStyle = color;
     context.lineWidth = 10;
     context.beginPath();
-    context.arc($_x, $_y, $radius, 0, Math.PI * 2);
+    context.arc($pos.x, $pos.y, $radius, 0, Math.PI * 2);
     context.fill();
-    context.stroke();
   };
 
-  const onEnter = () => {
-    document.body.style.cursor = "pointer";
-    radius.set(90);
+  const onHover = () => {
+    radius.set(20);
   };
 
   const onLeave = () => {
-    document.body.style.cursor = "default";
     dragging = false;
-    radius.set(80);
+    radius.set(10);
   };
 
-  const onDown = () => {
-    reorder(color);
+  const onClick = () => {
     dragging = true;
-    radius.set(120);
+    radius.set(20);
   };
 
-  const onUp = () => {
+  const onClickRelease = () => {
     dragging = false;
-    radius.set(80);
+    radius.set(10);
   };
 
   const onMove = (event: any) => {
     const e = event as CanvasLayerEvent;
-    if (dragging) {
-      _x.set(e.detail.x);
-      _y.set(e.detail.y);
+    if (dragging && e.detail.y > BORDER && e.detail.y < canvasHeight - BORDER) {
+      $pos.y = e.detail.y;
     }
   };
 </script>
 
 <Layer
   {render}
-  on:mouseenter={onEnter}
+  on:mouseenter={onHover}
   on:mouseleave={onLeave}
-  on:mousedown={onDown}
+  on:mousedown={onClick}
   on:mousemove={onMove}
-  on:mouseup={onUp}
-  on:touchstart={onDown}
+  on:mouseup={onClickRelease}
+  on:touchstart={onClick}
   on:touchmove={onMove}
-  on:touchend={onUp}
+  on:touchend={onClickRelease}
 />

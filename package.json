@@ -36,9 +36,9 @@
     "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
-    "@vitest/browser": "^0.29.7",
-    "@vitest/coverage-c8": "^0.29.7",
-    "@vitest/ui": "^0.29.7",
+    "@vitest/browser": "^0.30.0",
+    "@vitest/coverage-c8": "^0.30.0",
+    "@vitest/ui": "^0.30.0",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.0",
     "eslint": "^8.36.0",
@@ -66,7 +66,7 @@
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
     "vite-tsconfig-paths": "^4.0.7",
-    "vitest": "^0.29.7",
+    "vitest": "^0.30.0",
     "webdriverio": "^8.6.9"
   },
   "packageManager": "pnpm@8.2.0"

@@ -17,7 +17,7 @@ export const INITIAL_FREQUENCY = 8000; // 0 to 15 [kHz]
 export const MIN_FREQUENCY = 0;
 export const MAX_FREQUENCY = 15000;
 
-export const INITIAL_BPM = 90 * 4; // According to the paper, the cycle repetition rate was 1.5 Hz. (T = 0.66 s)
+export const INITIAL_BPM = 90 * 2; // According to the paper, the cycle repetition rate was 1.5 Hz. (T = 0.66 s)
 export const MAX_BPM = 90 * 6;
 export const MIN_BPM = 60;
 
@@ -42,7 +42,7 @@ export const MAX_REST_LENGTH = 16 * 4;
 /**
  * The duration of the note in the sequence.
  */
-export const DEFAULT_DURATION: Duration = "4n"; // 4n = 1/4
+export const DEFAULT_DURATION: Duration = "8n"; // 4n = 1/4
 export const MIN_DURATION: Duration = "128n"; // 16n = 1/16
 export const MAX_DURATION: Duration = "1n"; // 1n = 1/1
 

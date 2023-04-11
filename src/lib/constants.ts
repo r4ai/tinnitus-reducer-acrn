@@ -1,6 +1,6 @@
 import type { Duration, SequenceOption, SettingsScheme } from "./stores";
 
-/* Used for internal purposes */
+// * Internal
 export const INITIAL_THEME = "dark";
 
 export const SHEET_RANDOM_FREQUENCY = 0;
@@ -8,7 +8,7 @@ export const SHEET_REST = 1;
 
 export const SAVE_DELAY_TIME = 2; // 3 seconds
 
-/* Used for default values */
+// * Config
 export const INITIAL_VOLUME = -60; // -80 ~ 0 [dB]
 export const MIN_VOLUME = -80;
 export const MAX_VOLUME = 0;
@@ -52,7 +52,12 @@ export const DEFAULT_SEQUENCE_OPTION: SequenceOption = {
   duration: DEFAULT_DURATION,
 };
 
-/* settings */
+// * Timer
+export const INITIAL_TIMER = 60; // Time to stop the sound [min]
+export const MIN_TIMER = 0; // Time to stop the sound [min]
+export const MAX_TIMER = 180; // Time to stop the sound [min]
+
+// * Settings
 export const LOCAL_STORAGE_SETTINGS_KEY = "settings";
 export const SETTINGS_FILE_NAME = "user-settings";
 export const DEFAULT_SETTINGS: SettingsScheme = {

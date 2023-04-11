@@ -7,6 +7,7 @@ import {
   INITIAL_BPM,
   INITIAL_FREQUENCY,
   INITIAL_PAN,
+  INITIAL_TIMER,
   INITIAL_VOLUME,
 } from "./constants";
 import { updateCache } from "./settings";
@@ -48,6 +49,10 @@ export const loopRepeat = writable([DEFAULT_LOOP_REPEAT]);
 export const restLength = writable([DEFAULT_REST_LENGTH]);
 export const duration: Writable<Duration[]> = writable([DEFAULT_DURATION]);
 export const mode: Writable<Mode> = writable("TONE");
+
+// * Timer
+export const timer = writable([INITIAL_TIMER * 60]); // Time to stop the sound [sec]
+export const timerIsRunning = writable(false);
 
 // * Internal
 export const isPlaying = writable(false);

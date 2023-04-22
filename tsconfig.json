@@ -23,8 +23,10 @@
     "types": [
       "vitest/globals",
       "vitest/importMeta",
-      "testing-library__jest-dom"
-    ]
+      "testing-library__jest-dom",
+      "vite-plugin-pwa/client"
+    ],
+    "ignoreDeprecations": "5.0"
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
   "references": [{ "path": "./tsconfig.node.json" }]

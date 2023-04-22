@@ -1,5 +1,5 @@
 [package]
-name = "tinnitus-reducer-ACRN"
+name = "tinnitus-reducer-acrn"
 version = "0.0.0"
 description = "A Tauri App"
 authors = ["rai"]
@@ -8,12 +8,15 @@ repository = "https://github.com/r4ai/tinnitus-reducer-acrn/"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+path = "src/lib.rs"
+crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "1.2", features = [] }
+tauri-build = { version = "2.0.0-alpha.0", features = [] }
 
 [dependencies]
-tauri = { version = "1.2", features = ["dialog-open", "dialog-save", "fs-create-dir", "fs-read-dir", "fs-read-file", "fs-write-file", "os-all", "path-all", "shell-open", "window-close", "window-hide", "window-maximize", "window-minimize", "window-show", "window-start-dragging", "window-unmaximize", "window-unminimize"] }
+tauri = { version = "2.0.0-alpha.0", features = ["dialog-open", "dialog-save", "fs-create-dir", "fs-read-dir", "fs-read-file", "fs-write-file", "os-all", "path-all", "shell-open", "window-close", "window-hide", "window-maximize", "window-minimize", "window-show", "window-start-dragging", "window-unmaximize", "window-unminimize"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 serde_yaml = "0.9.21"

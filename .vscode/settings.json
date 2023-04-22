@@ -46,5 +46,9 @@
   ],
   "markdownlint.config": {
     "MD033": false // Allow inline HTML
-  }
+  },
+  "rust-analyzer.linkedProjects": [
+    ".\\src-tauri\\Cargo.toml",
+    ".\\src-tauri\\Cargo.toml"
+  ]
 }

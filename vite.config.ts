@@ -2,6 +2,7 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { resolve } from "path";
 import sveltePreprocess from "svelte-preprocess";
 /// <reference types="vitest" />
+import { VitePWA } from "vite-plugin-pwa";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
 
@@ -26,6 +27,7 @@ export default defineConfig(async ({ mode }) => ({
       ],
     }),
     tsconfigPaths(),
+    VitePWA({ registerType: "autoUpdate", devOptions: { enabled: true } }),
   ],
   test: {
     include: ["src/tests/**/*.{js,ts}"],
@@ -63,6 +65,7 @@ export default defineConfig(async ({ mode }) => ({
     sourcemap: !!process.env.TAURI_DEBUG,
   },
   esbuild: {
+    // drop console and debugger statements in production
     drop: mode === "production" ? ["console", "debugger"] : [],
-  },
+  } as any, // This any is needed because of ESBuildOptions type doesn't have the drop property
 }));

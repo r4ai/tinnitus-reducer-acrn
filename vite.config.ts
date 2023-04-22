@@ -27,7 +27,37 @@ export default defineConfig(async ({ mode }) => ({
       ],
     }),
     tsconfigPaths(),
-    VitePWA({ registerType: "autoUpdate", devOptions: { enabled: true } }),
+    VitePWA({
+      registerType: "autoUpdate", // TODO: Change to "prompt". We need to add a window to show the prompt
+      strategies: "generateSW",
+      devOptions: { enabled: true },
+      manifest: {
+        name: "Tinnitus Reducer ACRN",
+        short_name: "Tinnitus Reducer ACRN",
+        description:
+          "Help you reduce your tinnitus using ACRN (= Acoustic Coordinated Reset Neuromodulation) treatment.",
+        theme_color: "#593e9e",
+        icons: [
+          {
+            src: "/tinnitus-reducer-acrn/android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "/tinnitus-reducer-acrn/android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: "/tinnitus-reducer-acrn/android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable",
+          },
+        ],
+        display: "standalone",
+      },
+    }),
   ],
   test: {
     include: ["src/tests/**/*.{js,ts}"],

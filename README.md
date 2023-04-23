@@ -20,7 +20,7 @@ This app is available as:
 
 For desktop app, you can download the app installer from [Releases](https://github.com/r4ai/tinnitus-reducer-acrn/releases/latest) page.
 
-There are no mobile apps yet, but I am planning to make one.
+For mobile app, You can install this app on your mobile device as a PWA app. please refer to [this site](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&oco=1) for instructions on how to install a PWA app. In the future, I plan to distribute the Android app in the google play store.
 
 ## Caution
 

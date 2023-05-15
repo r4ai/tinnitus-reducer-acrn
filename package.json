@@ -71,5 +71,5 @@
     "vitest": "^0.29.7",
     "webdriverio": "^8.6.9"
   },
-  "packageManager": "pnpm@8.5.0"
+  "packageManager": "pnpm@8.5.1"
 }

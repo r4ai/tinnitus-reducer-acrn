@@ -16,7 +16,7 @@ This app is available as:
   - Windows
   - macOS
   - Linux
-- Web app: https://r4ai.github.io/tinnitus-reducer-acrn/
+- Web app: <https://r4ai.github.io/tinnitus-reducer-acrn/>
 
 For desktop app, you can download the app installer from [Releases](https://github.com/r4ai/tinnitus-reducer-acrn/releases/latest) page.
 
@@ -50,6 +50,12 @@ This app is heavily inspired by following softwares:
 I do not have a Linux machine and therefore cannot test the Linux version of the app. If you find any bugs, please open an issue and let me know. Even on other operating systems, if you find any problems, please let me know.
 
 If you have any ideas you would like to see implemented in this app, feel free to open a new issue and let me know. **Any kinds of contributions are welcome!!**
+
+### Requirements
+
+- [Node.js](https://nodejs.org/en) >= 18
+- [pnpm](https://pnpm.io/installation)
+- [Tauri](https://tauri.app/v1/guides/getting-started/prerequisites/)
 
 ### Commands
 

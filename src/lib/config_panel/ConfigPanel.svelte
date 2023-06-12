@@ -9,16 +9,13 @@
 </script>
 
 <script lang="ts">
-  import { onMount } from "svelte";
-
-  import { writable, type Writable } from "svelte/store";
+  import { writable } from "svelte/store";
   import { match } from "ts-pattern";
   import {
     MAX_BPM,
     MIN_BPM,
     MAX_VOLUME,
     MIN_VOLUME,
-    INITIAL_BPM,
     MAX_PAN,
     MIN_PAN,
     MAX_DURATION,

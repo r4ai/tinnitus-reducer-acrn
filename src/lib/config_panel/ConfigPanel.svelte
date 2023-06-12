@@ -71,19 +71,6 @@
   <div class={`flex ${$clientWidth > 540 * 2 ? "flex-row" : "flex-col"} gap-4`}>
     <div class="config-panel w-full gap-4">
       <Slider
-        gridArea="bpm"
-        values={bpm}
-        maxValue={MAX_BPM}
-        minValue={MIN_BPM}
-        isVertical={false}
-        class="w-80"
-        sliderProps={{
-          pips: true,
-          pipstep: 60,
-          all: "label",
-        }}
-      />
-      <Slider
         gridArea="volume"
         values={volume}
         maxValue={MAX_VOLUME}
@@ -93,6 +80,19 @@
         sliderProps={{
           pips: true,
           pipstep: 20,
+          all: "label",
+        }}
+      />
+      <Slider
+        gridArea="bpm"
+        values={bpm}
+        maxValue={MAX_BPM}
+        minValue={MIN_BPM}
+        isVertical={false}
+        class="w-80"
+        sliderProps={{
+          pips: true,
+          pipstep: 60,
           all: "label",
         }}
       />
@@ -169,8 +169,8 @@
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
     grid-template-areas:
-      "bpm volume"
-      "channel volume";
+      "volume bpm"
+      "volume channel";
   }
 
   @media screen and (max-width: 540px) {
@@ -189,8 +189,8 @@
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
     grid-template-areas:
-      "loopRepeat duration"
-      "restLength duration";
+      "duration loopRepeat"
+      "duration restLength";
   }
 
   @media screen and (max-width: 540px) {

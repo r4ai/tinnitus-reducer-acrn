@@ -9,17 +9,17 @@
   </p>
   <br>
   <div>
-    <a href="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/run-frontend-test.yml">
-      <img src="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/run-frontend-test.yml/badge.svg" />
-    </a>
     <a href="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/publish-gh-pages.yml">
       <img src="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/publish-gh-pages.yml/badge.svg" />
     </a>
     <a href="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/publish-tauri-apps.yml">
       <img src="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/publish-tauri-apps.yml/badge.svg" />
     </a>
+    <br>
+    <a href="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/run-frontend-test.yml">
+      <img src="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/run-frontend-test.yml/badge.svg" />
+    </a>
   </div>
-  <br>
   <br>
     <img src=".github/imgs/app_image.png" width=85% />
   <br>

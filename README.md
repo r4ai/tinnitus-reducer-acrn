@@ -1,12 +1,33 @@
 
-<h1 align="center">Tinnitus Reducer ACRN</h1>
+<div align="center">
+  <br>
+  <img src="icon/Headphone/Color/headphone_color.svg" width="180" />
+  <br>
+  <h1>Tinnitus Reducer ACRN</h1>
+  <p>
+    This is a simple app to help you reduce your tinnitus using <br /> ACRN (= Acoustic Coordinated Reset Neuromodulation) treatment.
+  </p>
+  <br>
+  <div>
+    <a href="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/run-frontend-test.yml">
+      <img src="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/run-frontend-test.yml/badge.svg" />
+    </a>
+    <a href="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/publish-gh-pages.yml">
+      <img src="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/publish-gh-pages.yml/badge.svg" />
+    </a>
+    <a href="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/publish-tauri-apps.yml">
+      <img src="https://github.com/r4ai/tinnitus-reducer-acrn/actions/workflows/publish-tauri-apps.yml/badge.svg" />
+    </a>
+  </div>
+  <br>
+  <br>
+    <img src=".github/imgs/app_image.png" width=85% />
+  <br>
+</div>
 
-<p align="center">
-This is a simple app to help you reduce your tinnitus using <br /> ACRN (= Acoustic Coordinated Reset Neuromodulation) treatment.
-</p>
-<p align="center">
-  <img src=".github/imgs/app_image.png" width=85% />
-</p>
+---
+
+<br>
 
 ## How to install
 

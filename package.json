@@ -29,7 +29,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@tauri-apps/cli": "^1.2.3",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/svelte": "^3.2.2",
+    "@testing-library/svelte": "^4.0.0",
     "@tsconfig/svelte": "^3.0.0",
     "@types/node": "^18.15.10",
     "@types/svelte-range-slider-pips": "^2.0.0",

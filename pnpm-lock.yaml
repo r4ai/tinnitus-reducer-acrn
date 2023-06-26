@@ -1974,7 +1974,7 @@ packages:
       '@adobe/css-tools': 4.2.0
       '@babel/runtime': 7.22.5
       '@types/testing-library__jest-dom': 5.14.5
-      aria-query: 5.2.1
+      aria-query: 5.3.0
       chalk: 3.0.0
       css.escape: 1.5.1
       dom-accessibility-api: 0.5.16
@@ -2149,7 +2149,7 @@ packages:
       grapheme-splitter: 1.0.4
       ignore: 5.2.4
       natural-compare-lite: 1.4.0
-      semver: 7.5.2
+      semver: 7.5.3
       tsutils: 3.21.0(typescript@5.0.2)
       typescript: 5.0.2
     transitivePeerDependencies:
@@ -2223,7 +2223,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.2
+      semver: 7.5.3
       tsutils: 3.21.0(typescript@5.0.2)
       typescript: 5.0.2
     transitivePeerDependencies:
@@ -2244,7 +2244,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.57.0(typescript@5.0.2)
       eslint: 8.36.0
       eslint-scope: 5.1.1
-      semver: 7.5.2
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2265,7 +2265,7 @@ packages:
     dependencies:
       '@vitest/runner': 0.29.7
       local-pkg: 0.4.3
-      mlly: 1.3.0
+      mlly: 1.4.0
       modern-node-polyfills: 0.1.0
       rollup-plugin-node-polyfills: 0.2.1
       sirv: 2.0.3
@@ -2524,8 +2524,8 @@ packages:
       deep-equal: 2.2.1
     dev: true
 
-  /aria-query@5.2.1:
-    resolution: {integrity: sha512-7uFg4b+lETFgdaJyETnILsXgnnzVnkHcgRbwbPwevm5x/LmUlt3MjczMRe1zg824iBgXZNRPTBftNYyRSKLp2g==}
+  /aria-query@5.3.0:
+    resolution: {integrity: sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==}
     dependencies:
       dequal: 2.0.3
     dev: true
@@ -2606,7 +2606,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.9
-      caniuse-lite: 1.0.30001504
+      caniuse-lite: 1.0.30001508
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2701,8 +2701,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001504
-      electron-to-chromium: 1.4.433
+      caniuse-lite: 1.0.30001508
+      electron-to-chromium: 1.4.440
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
 
@@ -2728,7 +2728,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /c8@7.14.0:
@@ -2760,8 +2760,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /cacheable-request@10.2.10:
-    resolution: {integrity: sha512-v6WB+Epm/qO4Hdlio/sfUn69r5Shgh39SsE9DSd4bIezP0mblOlObI+I0kUEM7J0JFc+I7pSeMeYaOYtX1N/VQ==}
+  /cacheable-request@10.2.12:
+    resolution: {integrity: sha512-qtWGB5kn2OLjx47pYUkWicyOpK1vy9XZhq8yRTXOy+KAmjjESSRLx6SiExnnaGGUP1NM6/vmygMu0fGylNh9tw==}
     engines: {node: '>=14.16'}
     dependencies:
       '@types/http-cache-semantics': 4.0.1
@@ -2792,13 +2792,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.9
-      caniuse-lite: 1.0.30001504
+      caniuse-lite: 1.0.30001508
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite@1.0.30001504:
-    resolution: {integrity: sha512-5uo7eoOp2mKbWyfMXnGO9rJWOGU8duvzEiYITW+wivukL7yHH4gX9yuRaobu6El4jPxo6jKZfG+N6fB621GD/Q==}
+  /caniuse-lite@1.0.30001508:
+    resolution: {integrity: sha512-sdQZOJdmt3GJs1UMNpCCCyeuS2IEGLXnHyAo9yIO5JJDjbjoVRij4M1qep6P6gFpptD1PqIYgzM+gwJbOi92mw==}
 
   /chai@4.3.7:
     resolution: {integrity: sha512-HLnAzZ2iupm25PlN0xFreAlBA5zaBSv3og0DdeGA4Ar6h6rJ3A0rolRUKJhSF2V10GZKDgWF/VmAEsNWjCRB+A==}
@@ -3431,8 +3431,8 @@ packages:
       jake: 10.8.7
     dev: true
 
-  /electron-to-chromium@1.4.433:
-    resolution: {integrity: sha512-MGO1k0w1RgrfdbLVwmXcDhHHuxCn2qRgR7dYsJvWFKDttvYPx6FNzCGG0c/fBBvzK2LDh3UV7Tt9awnHnvAAUQ==}
+  /electron-to-chromium@1.4.440:
+    resolution: {integrity: sha512-r6dCgNpRhPwiWlxbHzZQ/d9swfPaEJGi8ekqRBwQYaR3WmA5VkqQfBWSDDjuJU1ntO+W9tHx8OHV/96Q8e0dVw==}
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -3939,7 +3939,7 @@ packages:
       is-core-module: 2.12.1
       minimatch: 3.1.2
       resolve: 1.22.2
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /eslint-plugin-prettier@4.2.1(eslint-config-prettier@8.8.0)(eslint@8.36.0)(prettier@2.8.7):
@@ -4413,7 +4413,7 @@ packages:
       '@sindresorhus/is': 5.4.1
       '@szmarczak/http-timer': 5.0.1
       cacheable-lookup: 7.0.0
-      cacheable-request: 10.2.10
+      cacheable-request: 10.2.12
       decompress-response: 6.0.0
       form-data-encoder: 2.1.4
       get-stream: 6.0.1
@@ -5316,8 +5316,8 @@ packages:
     dependencies:
       minimist: 1.2.8
 
-  /mlly@1.3.0:
-    resolution: {integrity: sha512-HT5mcgIQKkOrZecOjOX3DJorTikWXwsBfpcr/MGBkhfWcjiqvnaL/9ppxvIUXfjT6xt4DVIAsN9fMUz1ev4bIw==}
+  /mlly@1.4.0:
+    resolution: {integrity: sha512-ua8PAThnTwpprIaU47EPeZ/bPUVp2QYBbWMphUQpVdBI3Lgqzm5KZQ45Agm3YJedHXaIHl6pBGabaLSUPPSptg==}
     dependencies:
       acorn: 8.9.0
       pathe: 1.1.1
@@ -5391,7 +5391,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.12.1
-      semver: 7.5.2
+      semver: 7.5.3
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -5604,7 +5604,7 @@ packages:
     resolution: {integrity: sha512-nN7pYi0AQqJnoLPC9eHFQ8AcyaixBUOwvqc5TDnIKCMEE6I0y8P7OKA7fPexsXGCGxQDl/cmrLAp26LhcwxZ4A==}
     dependencies:
       jsonc-parser: 3.2.0
-      mlly: 1.3.0
+      mlly: 1.4.0
       pathe: 1.1.1
     dev: true
 
@@ -6373,7 +6373,7 @@ packages:
       jest-worker: 26.6.2
       rollup: 2.79.1
       serialize-javascript: 4.0.0
-      terser: 5.18.0
+      terser: 5.18.1
     dev: true
 
   /rollup-pluginutils@2.8.2:
@@ -6390,8 +6390,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rollup@3.25.1:
-    resolution: {integrity: sha512-tywOR+rwIt5m2ZAWSe5AIJcTat8vGlnPFAv15ycCrw33t6iFsXZ6mzHVFh2psSjxQPmI+xgzMZZizUAukBI4aQ==}
+  /rollup@3.25.2:
+    resolution: {integrity: sha512-VLnkxZMDr3jpxgtmS8pQZ0UvhslmF4ADq/9w4erkctbgjCqLW9oa89fJuXEs4ZmgyoF7Dm8rMDKSS5b5u2hHUg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -6453,8 +6453,8 @@ packages:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
 
-  /semver@7.5.2:
-    resolution: {integrity: sha512-SoftuTROv/cRjCze/scjGyiDtcUyxw1rgYQSZY7XTmtR5hX+dm76iDbTH8TkLPHCQmlbQVSSbNZCPM2hb0knnQ==}
+  /semver@7.5.3:
+    resolution: {integrity: sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -7007,8 +7007,8 @@ packages:
       unique-string: 2.0.0
     dev: true
 
-  /terser@5.18.0:
-    resolution: {integrity: sha512-pdL757Ig5a0I+owA42l6tIuEycRuM7FPY4n62h44mRLRfnOxJkkOHd6i89dOpwZlpF6JXBwaAHF6yWzFrt+QyA==}
+  /terser@5.18.1:
+    resolution: {integrity: sha512-j1n0Ao919h/Ai5r43VAnfV/7azUYW43GPxK7qSATzrsERfW7+y2QW9Cp9ufnRF5CQUWbnLSo7UJokSWCqg4tsQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -7315,7 +7315,7 @@ packages:
     dependencies:
       cac: 6.7.14
       debug: 4.3.4
-      mlly: 1.3.0
+      mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
       vite: 4.2.1(@types/node@18.15.10)
@@ -7393,7 +7393,7 @@ packages:
       esbuild: 0.17.19
       postcss: 8.4.21
       resolve: 1.22.2
-      rollup: 3.25.1
+      rollup: 3.25.2
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -7513,7 +7513,7 @@ packages:
       '@wdio/types': 8.6.8
       '@wdio/utils': 8.6.8
       archiver: 5.3.1
-      aria-query: 5.2.1
+      aria-query: 5.3.0
       css-shorthand-properties: 1.1.1
       css-value: 0.0.1
       devtools: 8.6.9(typescript@5.0.2)

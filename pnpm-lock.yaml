@@ -1800,8 +1800,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /@steeze-ui/heroicons@2.2.2:
-    resolution: {integrity: sha512-VUkgSAbjLzsEuF4kDQDESANb/NNxqhkOMnrzD1VhB3tSGr7wVZ5FKS7aM2QZcKXjziwR6dbt7Nhs3fpZhqOi1A==}
+  /@steeze-ui/heroicons@2.2.3:
+    resolution: {integrity: sha512-bv4YK375U9TDS50SmJ5VdFy2UmMhgKbJCCbo6IUU3qs2luEj2VX6sQoDy96j8AIKttxMd62ih1j0lZj7CTjIfA==}
     dev: true
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
@@ -6796,7 +6796,7 @@ packages:
     resolution: {integrity: sha512-xKMI/Z0f/6831I0R1YKJjVbAw9VBD6XKysvng6LtomlS4n3ZD1lZNAfLrrCmnc1pmiLr/8sVeQA8kgHLQwYlRg==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@steeze-ui/heroicons': 2.2.2
+      '@steeze-ui/heroicons': 2.2.3
     dev: true
 
   /svelte-hmr@0.15.2(svelte@3.57.0):

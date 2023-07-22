@@ -109,11 +109,11 @@ devDependencies:
     specifier: ^3.2.2
     version: 3.2.2(prettier@3.0.0)(typescript@5.0.2)
   prettier-plugin-svelte:
-    specifier: ^2.10.0
-    version: 2.10.0(prettier@3.0.0)(svelte@3.57.0)
+    specifier: ^3.0.0
+    version: 3.0.0(prettier@3.0.0)(svelte@3.57.0)
   prettier-plugin-tailwindcss:
     specifier: ^0.4.0
-    version: 0.4.0(prettier-plugin-organize-imports@3.2.2)(prettier-plugin-svelte@2.10.0)(prettier@3.0.0)
+    version: 0.4.0(prettier-plugin-organize-imports@3.2.2)(prettier-plugin-svelte@3.0.0)(prettier@3.0.0)
   svelte:
     specifier: ^3.57.0
     version: 3.57.0
@@ -6221,17 +6221,17 @@ packages:
       typescript: 5.0.2
     dev: true
 
-  /prettier-plugin-svelte@2.10.0(prettier@3.0.0)(svelte@3.57.0):
-    resolution: {integrity: sha512-GXMY6t86thctyCvQq+jqElO+MKdB09BkL3hexyGP3Oi8XLKRFaJP1ud/xlWCZ9ZIa2BxHka32zhHfcuU+XsRQg==}
+  /prettier-plugin-svelte@3.0.0(prettier@3.0.0)(svelte@3.57.0):
+    resolution: {integrity: sha512-l3RQcPty2UBCoRh3yb9c5XCAmxkrc4BptAnbd5acO1gmSJtChOWkiEjnOvh7hvmtT4V80S8gXCOKAq8RNeIzSw==}
     peerDependencies:
-      prettier: ^1.16.4 || ^2.0.0
-      svelte: ^3.2.0
+      prettier: ^3.0.0
+      svelte: ^3.2.0 || ^4.0.0-next.0
     dependencies:
       prettier: 3.0.0
       svelte: 3.57.0
     dev: true
 
-  /prettier-plugin-tailwindcss@0.4.0(prettier-plugin-organize-imports@3.2.2)(prettier-plugin-svelte@2.10.0)(prettier@3.0.0):
+  /prettier-plugin-tailwindcss@0.4.0(prettier-plugin-organize-imports@3.2.2)(prettier-plugin-svelte@3.0.0)(prettier@3.0.0):
     resolution: {integrity: sha512-Rna0sDPETA0KNhMHlN8wxKNgfSa8mTl2hPPAGxnbv6tUcHT6J4RQmQ8TLXyhB7Dm5Von4iHloBxTyClYM6wT0A==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -6285,7 +6285,7 @@ packages:
     dependencies:
       prettier: 3.0.0
       prettier-plugin-organize-imports: 3.2.2(prettier@3.0.0)(typescript@5.0.2)
-      prettier-plugin-svelte: 2.10.0(prettier@3.0.0)(svelte@3.57.0)
+      prettier-plugin-svelte: 3.0.0(prettier@3.0.0)(svelte@3.57.0)
     dev: true
 
   /prettier@3.0.0:

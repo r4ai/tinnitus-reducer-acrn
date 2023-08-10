@@ -55,7 +55,7 @@
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-svelte": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.4.0",
+    "prettier-plugin-tailwindcss": "^0.5.0",
     "svelte": "^3.57.0",
     "svelte-canvas": "^0.9.3",
     "svelte-hero-icons": "^5.0.0",

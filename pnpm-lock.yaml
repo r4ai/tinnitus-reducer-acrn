@@ -37,8 +37,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0(svelte@3.57.0)
   '@tsconfig/svelte':
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^5.0.0
+    version: 5.0.0
   '@types/node':
     specifier: ^20.0.0
     version: 20.0.0
@@ -1978,8 +1978,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /@tsconfig/svelte@3.0.0:
-    resolution: {integrity: sha512-pYrtLtOwku/7r1i9AMONsJMVYAtk3hzOfiGNekhtq5tYBGA7unMve8RvUclKLMT3PrihvJqUmzsRGh0RP84hKg==}
+  /@tsconfig/svelte@5.0.0:
+    resolution: {integrity: sha512-iu5BqFjU0+OcLTNQp7fHe6Bf6zdNeJ9IZjLZMqWLuGzVFm/xx+lm//Tf6koPyRmxo55/Snm6RRQ990n89cRKFw==}
     dev: true
 
   /@types/aria-query@5.0.2:

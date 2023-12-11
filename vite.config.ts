@@ -66,7 +66,6 @@ export default defineConfig(async ({ mode }) => ({
     environment: "jsdom",
     browser: {
       enabled: true,
-      name: "edge",
       headless: true,
     },
   },

@@ -12,7 +12,7 @@ dependencies:
     version: 3.1.4(@babel/core@7.24.6)(postcss@8.4.38)(svelte@3.57.0)
   tauri-settings:
     specifier: ^0.3.1
-    version: 0.3.1
+    version: 0.3.5
   tone:
     specifier: ^14.7.77
     version: 14.7.77
@@ -7547,8 +7547,8 @@ packages:
       readable-stream: 3.6.2
     dev: true
 
-  /tauri-settings@0.3.1:
-    resolution: {integrity: sha512-Re/B6P+rA8ahJnFl5Qu4SGo6ZU5ifgpAMsJhfzVeTv07lLuF1YRyS5zU/EHbH1ZpIslz8vQgtvjhvtZlBVcApw==}
+  /tauri-settings@0.3.5:
+    resolution: {integrity: sha512-07v+i6ig+z1eWHm9WYAvOpFPM7afeKZZmM0egIY0aLSleaZy33zEiKmefNKI+G8ymOAJX/ZYN1N1cM2lyGOiJw==}
     dev: false
 
   /temp-dir@2.0.0:

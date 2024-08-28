@@ -17,8 +17,8 @@ dependencies:
     specifier: ^14.7.77
     version: 14.7.77
   ts-pattern:
-    specifier: ^4.2.2
-    version: 4.2.2
+    specifier: ^5.0.0
+    version: 5.0.0
 
 devDependencies:
   '@sveltejs/vite-plugin-svelte':
@@ -7590,8 +7590,8 @@ packages:
       typescript: 5.0.2
     dev: true
 
-  /ts-pattern@4.2.2:
-    resolution: {integrity: sha512-qzJMo2pbkUJWusRH5o8xR+xogn6RmvViyUgwBFTtRENLse470clCGjHDf6haWGZ1AOmk8XkEohUoBW8Uut6Scg==}
+  /ts-pattern@5.0.0:
+    resolution: {integrity: sha512-FDTdTujq2GvMmrwYM0Om6pMilRAUKvBApEN+YniTQui/HGjFwaI6WAx9SepD+yDBf4q29JLf6yqGB8uvdzysEg==}
     dev: false
 
   /tsconfck@2.1.2(typescript@5.0.2):

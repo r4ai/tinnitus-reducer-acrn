@@ -30,7 +30,7 @@
     "@tauri-apps/cli": "^1.2.3",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/svelte": "^4.0.0",
-    "@tsconfig/svelte": "^3.0.0",
+    "@tsconfig/svelte": "^5.0.0",
     "@types/node": "^20.0.0",
     "@types/svelte-range-slider-pips": "^2.0.0",
     "@types/testing-library__jest-dom": "^5.14.5",
